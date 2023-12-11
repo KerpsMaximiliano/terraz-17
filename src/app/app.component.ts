@@ -1,14 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
+// * Services.
+import { CoreService } from '@core/services/core.service';
+
 @Component({
-  selector: 'app-root',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
+  selector: 'app-root',
   imports: [CommonModule, RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  template: '<router-outlet />',
 })
 export class AppComponent {
-  title = 'terraz';
+  constructor(private _service: CoreService) {
+    this._service.viewport();
+  }
 }

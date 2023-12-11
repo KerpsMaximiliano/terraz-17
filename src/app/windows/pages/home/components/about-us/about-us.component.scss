@@ -1,0 +1,31 @@
+strong {
+  color: var(--nordic);
+  font-size: calc(var(--view) * 1.8);
+}
+
+.box {
+  display: grid;
+  grid-template-columns: max-content max-content 1fr;
+  gap: calc(var(--view) * 3);
+  padding: 0 calc(var(--view) * 4);
+
+  &-icon {
+    margin-top: calc(var(--view) * 0.9);
+
+    &:nth-child(1) {
+      color: var(--nordic);
+    }
+
+    &:nth-child(4) {
+      color: var(--persian);
+    }
+
+    &:nth-child(7) {
+      color: #52914b;
+    }
+
+    &:nth-child(10) {
+      color: #df912f;
+    }
+  }
+}

@@ -1,0 +1,130 @@
+h2,
+p,
+button {
+  color: var(--nordic);
+}
+
+span,
+strong,
+.mat-icon {
+  color: var(--white);
+}
+
+h2 {
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: calc(var(--view) * 0.2);
+  font-size: calc(var(--view) * 6);
+  text-shadow: var(--text-shadow);
+}
+
+em {
+  font-size: calc(var(--view) * 5);
+}
+
+p {
+  font-size: calc(var(--view) * 1.6);
+  font-weight: 600;
+  margin: calc(var(--view) * 4) 0;
+}
+
+strong {
+  font-size: calc(var(--view) * 1.6);
+  font-weight: 600;
+}
+
+hr {
+  height: 35%;
+  width: 0.4vw;
+  border: none;
+  background-color: var(--white);
+}
+
+article {
+  position: relative;
+  display: grid;
+  grid-template-columns: 0.7fr minmax(calc(var(--view) * 25), 0.7fr) 1.6fr;
+
+  & > div:nth-child(1) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 70%;
+    height: calc(var(--view) * 11);
+    margin-bottom: calc(var(--view) * 3);
+    background-color: var(--nordic);
+    z-index: 2;
+  }
+
+  & > div:nth-child(2) {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: calc(var(--view) * 2);
+    padding: 0 calc(var(--view) * 2);
+    z-index: 3;
+
+    & div:first-child {
+      min-height: calc(var(--view) * 17.3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    & div:last-child {
+      text-align: center;
+      font-size: calc(var(--view) * 50);
+      line-height: 0.925;
+      color: var(--bg-primary);
+      font-weight: 600;
+    }
+  }
+
+  & > div:nth-child(3) {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-right: calc(var(--view) * 2);
+    z-index: 3;
+
+    & > p {
+      text-shadow: var(--text-shadow);
+    }
+
+    & > div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: calc(var(--view) * 4);
+      min-width: max-content;
+      min-height: calc(var(--view) * 17.3);
+
+      & div:last-child {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: calc(var(--view) * 1.5);
+
+        & span {
+          min-width: calc(var(--view) * 3.4375);
+          text-align: center;
+          font-size: calc(var(--view) * 7.35);
+          font-weight: 600;
+          line-height: 1;
+        }
+      }
+    }
+  }
+
+  & > div:nth-child(4) {
+    margin-bottom: calc(var(--view) * 3);
+
+    & div {
+      width: auto;
+      height: 100%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: 100% 100%;
+    }
+  }
+}

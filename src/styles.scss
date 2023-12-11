@@ -1,1 +1,97 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  // * Medias.
+  --height: 0;
+  --width: 0;
+  --view: calc(((100vw + 100vh) / 1000) * 5.55);
+  // * Colors.
+  --nordic: #113a44;
+  --persian: #039d9d;
+  --white: #ffffff;
+  // * Text-decoration.
+  --text-shadow: 2px 2px 0 var(--white), -2px -2px 0 var(--white), 2px -2px 0 var(--white), -2px 2px 0 var(--white);
+  // * Form.
+  --form-success: var(--nordic);
+  --form-error: #ff0000;
+  --form-init: var(--persian);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  // font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
+  font-style: normal;
+  user-select: none;
+  scrollbar-width: none;
+  scrollbar-color: #ffffff #ffffff;
+  font-display: swap;
+
+  &::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #ffffff;
+    border-radius: 0px;
+    border: 0px none #ffffff;
+  }
+}
+
+html,
+body {
+  height: 100%;
+  max-height: var(--height);
+  overflow: hidden;
+}
+
+html {
+  --mdc-filled-text-field-label-text-color: #039d9d;
+  --mdc-filled-text-field-container-color: #fff;
+  --mdc-filled-text-field-focus-active-indicator-color: #039d9d;
+  --mdc-filled-text-field-focus-label-text-color: #039d9d;
+  --mdc-filled-text-field-active-indicator-color: #039d9d;
+}
+
+main {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100%;
+  max-height: var(--height);
+}
+
+section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  min-width: var(--width);
+  min-height: var(--height);
+}
+
+article {
+  height: var(--height);
+  overflow: hidden;
+}
+
+.mat-mdc-form-field-focus-overlay {
+  background-color: #039d9d;
+}
+
+.mat-icon {
+  transform: scale(2);
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+}
+
+.mdc-icon-button {
+  display: grid !important;
+  place-items: center;
+}

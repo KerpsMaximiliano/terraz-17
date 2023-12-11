@@ -1,13 +1,108 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Terraz</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
-</body>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Terraz</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Explora Terraz" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet" /> -->
+
+    <!-- FONT -->
+    <!-- SORA -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- POPPINS -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet" /> -->
+
+    <!-- ICONS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div id="loader">
+      <img src="./assets/images/loading/logo.png" alt="Pantalla de carga." />
+      <div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <style>
+      #loader,
+      #loader div {
+        display: flex;
+        align-items: center;
+      }
+      #loader {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 100;
+        background-color: #111827;
+        color: #f9fafb;
+        opacity: 1;
+        animation: opacity 0.5s ease-out 0s 1 normal none;
+      }
+      #loader div {
+        justify-content: space-between;
+        margin-top: 20px;
+        width: 80px;
+      }
+      #loader div div {
+        width: 16px;
+        height: 16px;
+        background-color: #1e96f7;
+        border-radius: 100%;
+        -webkit-animation: 1.2s ease-in-out infinite both animation;
+        animation: 1.2s ease-in-out infinite both animation;
+      }
+      #loader div div:nth-child(1) {
+        -webkit-animation-delay: -0.4s;
+        animation-delay: -0.4s;
+      }
+      #loader div div:nth-child(2) {
+        -webkit-animation-delay: -0.2s;
+        animation-delay: -0.2s;
+      }
+      @-webkit-keyframes animation {
+        0%,
+        100%,
+        80% {
+          -webkit-transform: scale(0);
+        }
+        40% {
+          -webkit-transform: scale(1);
+        }
+      }
+      @keyframes animation {
+        0%,
+        100%,
+        80% {
+          -webkit-transform: scale(0);
+          transform: scale(0);
+        }
+        40% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }</style
+    ><app-root></app-root>
+  </body>
 </html>
