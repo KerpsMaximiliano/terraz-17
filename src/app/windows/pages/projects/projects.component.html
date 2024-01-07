@@ -1,0 +1,26 @@
+<header>
+  <div class="project__title">
+    <mat-icon (click)="back()">arrow_back_ios</mat-icon>
+    <div>
+      <h1>Proyectos</h1>
+      <h2>DEPARTAMENTOS</h2>
+    </div>
+  </div>
+  <app-core-menu />
+</header>
+
+<main>
+  <section>
+    @defer {
+      @for (project of projects; track $index) {
+        <article>
+          <img [src]="project.image" [alt]="project.title" />
+          <div class="project__item">
+            <h3>{{ project.title }}</h3>
+            <a [routerLink]="['../proyecto/1']">ver más</a>
+          </div>
+        </article>
+      }
+    }
+  </section>
+</main>

@@ -50,7 +50,7 @@ html,
 body {
   height: 100%;
   max-height: var(--height);
-  overflow: hidden;
+  // overflow: hidden;
 }
 
 html {
@@ -59,25 +59,6 @@ html {
   --mdc-filled-text-field-focus-active-indicator-color: #039d9d;
   --mdc-filled-text-field-focus-label-text-color: #039d9d;
   --mdc-filled-text-field-active-indicator-color: #039d9d;
-}
-
-main {
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
-  height: 100%;
-  max-height: var(--height);
-}
-
-section {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  min-width: var(--width);
-  min-height: var(--height);
-}
-
-article {
-  height: var(--height);
-  overflow: hidden;
 }
 
 .mat-mdc-form-field-focus-overlay {

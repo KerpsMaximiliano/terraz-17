@@ -1,0 +1,100 @@
+header,
+main {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+header {
+  position: relative;
+  padding: calc(var(--view) * 1);
+
+  & > div {
+    display: flex;
+    align-items: center;
+    column-gap: calc(var(--view) * 1);
+
+    & mat-icon {
+      color: #000000;
+      font-size: calc(var(--view) * 1.2);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      color: var(--persian);
+    }
+  }
+}
+
+h1,
+h2 {
+  color: var(--persian);
+  font-weight: 600;
+  line-height: 1;
+}
+
+h1 {
+  font-size: calc(var(--view) * 2.25);
+  margin-bottom: calc(var(--view) * 1);
+}
+
+h2 {
+  font-size: calc(var(--view) * 1.1);
+  padding-right: calc(var(--view) * 1);
+}
+
+h3 {
+  font-size: calc(var(--view) * 1.25);
+  font-weight: 700;
+  color: var(--nordic);
+}
+
+main {
+  height: var(--height);
+  padding: calc(var(--view) * 2) calc(var(--view) * 1);
+
+  & section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: calc(var(--view) * 3);
+    padding: 0 calc(var(--view) * 3);
+
+    & article {
+      position: relative;
+
+      & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      & div {
+        min-height: calc(var(--view) * 3);
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        display: grid;
+        grid-template-columns: 1fr max-content;
+        align-items: center;
+        padding: calc(var(--view) * 1);
+        background-color: var(--white);
+
+        & a {
+          text-decoration: none;
+          color: var(--nordic);
+          font-size: 1rem;
+          font-weight: 500;
+          border: solid 2px var(--nordic);
+          border-radius: 7px;
+          padding: 0.3rem 0.5rem;
+          max-width: fit-content;
+          cursor: pointer;
+
+          &:hover {
+            background-color: var(--nordic);
+            color: var(--white);
+          }
+        }
+      }
+    }
+  }
+}

@@ -13,6 +13,10 @@ export const routes: Routes = [
         path: 'proyectos',
         loadComponent: () => import('./pages/projects/projects.component').then(m => m.ProjectsComponent),
       },
+      {
+        path: 'proyecto/:id',
+        loadComponent: () => import('./pages/project/project.component').then(m => m.ProjectComponent),
+      },
     ],
   },
 ];

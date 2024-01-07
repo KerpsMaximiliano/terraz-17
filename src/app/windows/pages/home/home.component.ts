@@ -1,12 +1,12 @@
 import {
-  Component,
-  ChangeDetectionStrategy,
-  ElementRef,
   AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
   inject,
   OnDestroy,
   ViewChild,
-  ChangeDetectorRef,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 
@@ -14,13 +14,13 @@ import { Subscription } from 'rxjs';
 import { CoreService } from '@app/core/services/core.service';
 
 // * Components.
-import { HeroComponent } from './components/hero/hero.component';
-import { CompanyComponent } from './components/company/company.component';
-import { SectionsComponent } from './components/sections/sections.component';
-import { CustomServiceComponent } from './components/custom-service/custom-service.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
-import { ExperiencesComponent } from './components/experiences/experiences.component';
+import { CompanyComponent } from './components/company/company.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { CustomServiceComponent } from './components/custom-service/custom-service.component';
+import { ExperiencesComponent } from './components/experiences/experiences.component';
+import { HeroComponent } from './components/hero/hero.component';
+import { SectionsComponent } from './components/sections/sections.component';
 
 @Component({
   standalone: true,
@@ -36,6 +36,21 @@ import { ContactComponent } from './components/contact/contact.component';
   ],
   selector: 'app-windows-home',
   template: `
+    <style>
+      main {
+        scroll-snap-type: y mandatory;
+        overflow-y: scroll;
+        height: 100%;
+        max-height: var(--height);
+      }
+
+      section {
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        min-width: var(--width);
+        min-height: var(--height);
+      }
+    </style>
     <main #scroll>
       <section><app-windows-home-hero /></section>
       @defer {
