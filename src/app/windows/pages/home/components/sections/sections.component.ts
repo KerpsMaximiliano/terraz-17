@@ -1,6 +1,8 @@
 import { NgStyle } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
+import { Observable } from 'rxjs';
 
 // * Material.
 import { MatButtonModule } from '@angular/material/button';
@@ -15,49 +17,13 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrls: ['./sections.component.scss'],
 })
 export class SectionsComponent {
-  public SECTIONS: ISection[] = [
-    {
-      title: 'APARTMENT',
-      description: 'Todos nuestros proyectos en construcción y finalizados.',
-      image: {
-        src: './assets/images/home/sections/aparment.tif',
-        alt: 'Apartamentos',
-      },
-    },
-    {
-      title: 'HOME',
-      description: 'Encontrá todas las variantes y modelos de casas en construcción de hormigón.',
-      image: {
-        src: 'assets/images/home/sections/home.tif',
-        alt: 'Casas',
-      },
-    },
-    {
-      title: 'INDUSTRY',
-      description: 'Nuestros proyectos industriales en construcción y finalizados.',
-      image: {
-        src: 'assets/images/home/sections/industry.tif',
-        alt: 'Industrias',
-      },
-    },
-    {
-      title: 'INVEST',
-      description: 'Invertí en nuestros proyectos y obtené una renta mensual.',
-      image: {
-        src: 'assets/images/home/sections/invest.tif',
-        alt: '',
-      },
-    },
-    // {
-    //   title: 'LOTE',
-    //   description: 'Desarrollos en diferentes localidades para que encuentres el que más se adapte a vos.',
-    //   image: {
-    //     src: '',
-    //     alt: '',
-    //     // src: 'assets/images/home/sections/'
-    //   },
-    // },
-  ];
+  firestore: Firestore = inject(Firestore);
+  sections$: Observable<ISection[]>;
+  section: ISection[] = [];
+  constructor() {
+    const ref = collection(this.firestore, 'sections');
+    this.sections$ = collectionData(ref) as Observable<ISection[]>;
+  }
 
   private _sanitizer: DomSanitizer = inject(DomSanitizer);
 
@@ -69,10 +35,10 @@ export class SectionsComponent {
 export interface ISection {
   title: string;
   description: string;
-  image: Img;
+  images: Img;
 }
 
 export interface Img {
-  src: string;
+  url: string;
   alt: string;
 }
