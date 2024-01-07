@@ -8,6 +8,7 @@ import {
   ViewChild,
   ChangeDetectorRef,
 } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 // * Services.
 import { CoreService } from '@app/core/services/core.service';
@@ -20,7 +21,6 @@ import { CustomServiceComponent } from './components/custom-service/custom-servi
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ExperiencesComponent } from './components/experiences/experiences.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { Subscription } from 'rxjs';
 
 @Component({
   standalone: true,
@@ -37,12 +37,12 @@ import { Subscription } from 'rxjs';
   selector: 'app-windows-home',
   template: `
     <main #scroll>
-      <!-- <section><app-windows-home-hero /></section>
+      <section><app-windows-home-hero /></section>
       @defer {
         <section #company><app-windows-home-company /></section>
-      } -->
+      }
       @if (!toContact) {
-        <!-- @defer {
+        @defer {
           <section><app-windows-home-sections /></section>
         }
         @defer {
@@ -50,7 +50,7 @@ import { Subscription } from 'rxjs';
         }
         @defer {
           <section><app-windows-home-about-us /></section>
-        } -->
+        }
         @defer {
           <section><app-windows-home-experiences /></section>
         }
@@ -68,8 +68,8 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   @ViewChild('contact') public contact?: ElementRef;
   public toContact: boolean = false;
 
-  private _service = inject(CoreService);
-  private _cdr = inject(ChangeDetectorRef);
+  private _service: CoreService = inject(CoreService);
+  private _cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
   private _listener: (() => void) | null = null;
   private _subscription: Subscription = this._service.contact.subscribe(() => this._scrollToElement());
 

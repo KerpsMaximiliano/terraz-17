@@ -7,12 +7,15 @@
   --nordic: #113a44;
   --persian: #039d9d;
   --white: #ffffff;
+  --yellow: #f5c518;
   // * Text-decoration.
   --text-shadow: 2px 2px 0 var(--white), -2px -2px 0 var(--white), 2px -2px 0 var(--white), -2px 2px 0 var(--white);
   // * Form.
   --form-success: var(--nordic);
   --form-error: #ff0000;
   --form-init: var(--persian);
+  // * Border.
+  --border: 2px solid #e2e6ea;
 }
 
 * {
@@ -21,7 +24,6 @@
   margin: 0;
   text-decoration: none;
   list-style: none;
-  // font-family: 'Poppins', sans-serif;
   font-family: 'Sora', sans-serif;
   font-style: normal;
   user-select: none;

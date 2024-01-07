@@ -1,17 +1,12 @@
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
-import { PlaceService } from '@app/core/services/place.service';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatIconModule],
   selector: 'app-windows-home-experiences',
   templateUrl: './experiences.component.html',
-  styleUrls: ['./experiences.component.scss', '../common.scss'],
+  styleUrls: ['./experiences.component.scss'],
 })
-export class ExperiencesComponent {
-  private _service = inject(PlaceService);
-
-  ngOnInit() {
-    // this._service.get().subscribe(data => console.log(data));
-  }
-}
+export class ExperiencesComponent {}

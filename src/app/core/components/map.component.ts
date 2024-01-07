@@ -17,7 +17,6 @@ import { IMap } from '@core/interfaces/core.interface';
   template: `
     @if (api | async) {
       <google-map
-        #map
         height="100%"
         width="100%"
         [center]="config.center"
@@ -33,7 +32,6 @@ import { IMap } from '@core/interfaces/core.interface';
         }
         <map-info-window />
       </google-map>
-      <button (click)="getReviews()">view</button>
     }
   `,
 })
@@ -63,10 +61,7 @@ export class MapComponent {
 
   constructor(httpClient: HttpClient) {
     this.api = httpClient
-      .jsonp(
-        'https://maps.googleapis.com/maps/api/js?v=beta&key=AIzaSyDztbDJpEj62tXlc31Ybwvgpb41uZ33ksA&libraries=places',
-        'callback'
-      )
+      .jsonp('https://maps.googleapis.com/maps/api/js?v=beta&key=AIzaSyDztbDJpEj62tXlc31Ybwvgpb41uZ33ksA', 'callback')
       .pipe(
         map(() => true),
         catchError(() => of(false))
@@ -77,19 +72,5 @@ export class MapComponent {
     if (!this.infoWindow) return;
     this.infoWindow.infoWindow?.setContent(content);
     this.infoWindow.open(marker);
-  }
-
-  getReviews() {
-    const placeId = 'ChIJFWRYvOirt5URvyvxMfk9QMo';
-    const map = new google.maps.Map(document.createElement('div'));
-    const service = new google.maps.places.PlacesService(map);
-
-    service.getDetails({ placeId: placeId }, (place, status) => {
-      if (status === google.maps.places.PlacesServiceStatus.OK) {
-        console.log(place?.reviews);
-      } else {
-        console.error('Error al obtener detalles del lugar:', status);
-      }
-    });
   }
 }

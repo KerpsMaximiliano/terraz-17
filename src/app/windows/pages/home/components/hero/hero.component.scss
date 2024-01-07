@@ -1,4 +1,6 @@
 article {
-  display: grid;
-  place-items: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

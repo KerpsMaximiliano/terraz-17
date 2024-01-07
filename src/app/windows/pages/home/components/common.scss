@@ -39,6 +39,7 @@ p {
 
 .box {
   min-height: calc(100% - calc(var(--view) * 8));
+  padding-top: calc(var(--view) * 4);
 }
 
 em {

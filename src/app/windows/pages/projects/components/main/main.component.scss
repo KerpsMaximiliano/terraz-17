@@ -1,0 +1,60 @@
+h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--nordic);
+}
+
+main {
+  padding: calc(var(--view) * 2);
+  height: var(--height);
+  width: var(--width);
+  max-width: 1600px;
+  margin: auto;
+}
+
+section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  place-content: center;
+  gap: 3rem;
+}
+
+article {
+  position: relative;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+div {
+  min-height: 3rem;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--white);
+}
+
+a {
+  text-decoration: none;
+  color: var(--nordic);
+  font-size: 1rem;
+  font-weight: 500;
+  border: solid 2px var(--nordic);
+  border-radius: 7px;
+  padding: 0.3rem 0.5rem;
+  max-width: fit-content;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--nordic);
+    color: var(--white);
+  }
+}

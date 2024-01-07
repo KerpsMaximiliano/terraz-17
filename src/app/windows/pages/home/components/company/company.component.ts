@@ -15,7 +15,7 @@ import { ButtonComponent } from '@app/core/components/button.component';
   styleUrls: ['./company.component.scss'],
 })
 export class CompanyComponent {
-  private _service = inject(CoreService);
+  private _service: CoreService = inject(CoreService);
 
   public contact(): void {
     this._service.toElement();
