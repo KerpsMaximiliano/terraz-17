@@ -29,7 +29,7 @@
   user-select: none;
   scrollbar-width: none;
   scrollbar-color: #ffffff #ffffff;
-  font-display: swap;
+  // font-display: swap;
 
   &::-webkit-scrollbar {
     width: 0px;
@@ -50,6 +50,7 @@ html,
 body {
   height: 100%;
   max-height: var(--height);
+  background-color: var(--white);
   // overflow: hidden;
 }
 

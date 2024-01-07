@@ -1,4 +1,4 @@
-<!-- @for (section of SECTIONS; track $index) {
+<!-- @for (section of sections$ | async; track $index) {
   <article>
     <div></div>
     <div>
@@ -32,7 +32,7 @@
     </div>
 
     <div>
-      <div [style.background-image]="'url(' + background(section.image.src) + ')'"></div>
+      <div [style.background-image]="'url(' + section.image + ')'"></div>
     </div>
   </article>
 } -->

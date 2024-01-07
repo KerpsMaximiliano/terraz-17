@@ -41,6 +41,8 @@ hr {
 }
 
 article {
+  height: var(--height);
+  width: var(--width);
   position: relative;
   display: grid;
   grid-template-columns: 0.7fr minmax(calc(var(--view) * 25), 0.7fr) 1.6fr;

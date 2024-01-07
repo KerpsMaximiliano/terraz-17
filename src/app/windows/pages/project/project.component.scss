@@ -1,63 +1,116 @@
+header {
+  position: relative;
+  padding: calc(var(--view) * 1);
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+
+  & > div {
+    display: flex;
+    align-items: center;
+    column-gap: calc(var(--view) * 1);
+
+    & mat-icon {
+      color: #000000;
+      font-size: calc(var(--view) * 1.2);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      color: var(--persian);
+    }
+  }
+}
+
 h1,
-h2,
-h3 {
+h2 {
   color: var(--persian);
   font-weight: 600;
   line-height: 1;
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: calc(var(--view) * 2.25);
+  margin-bottom: calc(var(--view) * 1);
 }
 
 h2 {
-  font-size: 1.2rem;
-  padding-right: 1rem;
+  font-size: calc(var(--view) * 1.1);
+  padding-right: calc(var(--view) * 1);
 }
 
 h3 {
-  font-size: 1.35rem;
+  font-size: calc(var(--view) * 1.25);
   font-weight: 700;
+  color: var(--nordic);
 }
 
 p {
   color: var(--nordic);
-  font-size: 1.6rem;
+  font-size: calc(var(--view) * 1.6);
   font-weight: 500;
   line-height: 1.5;
   word-spacing: 1px;
   width: 100%;
 }
 
+button {
+  text-decoration: none;
+  color: var(--nordic);
+  font-size: 1rem;
+  font-weight: 500;
+  border: solid 2px var(--nordic);
+  border-radius: 7px;
+  padding: 0.3rem 0.5rem;
+  max-width: fit-content;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--nordic);
+    color: var(--white);
+  }
+}
+
+main {
+  min-height: 100%;
+}
+
 .box {
   height: var(--height);
-  padding-top: 1rem;
-  overflow: hidden;
+  display: grid;
+  grid-template-rows: max-content 1fr;
+  align-items: center;
+  gap: calc(var(--view) * 3);
+  width: 100%;
+  max-width: 1600px;
+  margin: auto;
+  padding: calc(var(--view) * 2) calc(var(--view) * 1);
+}
 
-  &-container {
-    max-width: 1600px;
+.container {
+  min-height: 100%;
+}
+
+.content {
+  min-height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: calc(var(--view) * 2);
+  padding: calc(var(--view) * 3);
+
+  &__text {
+    width: 35%;
     height: 100%;
-    padding: 3rem;
-    padding-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: calc(var(--view) * 3);
+  }
 
-    & .box-content {
-      height: 100%;
-      width: 100%;
-      padding-bottom: 4rem;
-      gap: 2rem;
-
-      &__text {
-        width: 35%;
-        height: 100%;
-        gap: 3rem;
-        align-items: flex-start;
-      }
-
-      &__img {
-        width: 65%;
-        height: 100%;
-        max-height: 90%;
-      }
-    }
+  &__img {
+    width: 65%;
+    height: 65vh;
   }
 }

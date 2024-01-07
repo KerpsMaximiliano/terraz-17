@@ -1,10 +1,12 @@
 article {
   width: 100%;
   max-width: 1600px;
+  height: var(--height);
   max-height: var(--height);
   margin: 0 auto;
   padding: calc(var(--view) * 4);
   display: grid;
+  gap: calc(var(--view) * 2);
 }
 
 h2,
@@ -52,8 +54,9 @@ img {
   grid-template-columns: repeat(3, 1fr);
   gap: calc(var(--view) * 1);
   align-content: center;
-  max-height: calc(100% - var(--view) * 8);
-  margin-top: calc(var(--view) * 4);
+  // max-height: calc(100% - var(--view) * 8);
+  // height: var(--height);
+  // margin-top: calc(var(--view) * 4);
 
   &-card {
     border: var(--border);

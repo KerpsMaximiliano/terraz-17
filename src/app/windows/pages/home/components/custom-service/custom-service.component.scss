@@ -1,13 +1,20 @@
+article {
+  display: grid;
+  align-items: center;
+  gap: calc(var(--view) * 2);
+}
+
 .video {
   display: flex;
-  margin-top: 3rem;
+  // margin-top: 3rem;
 }
 
 video {
   background-color: var(--nordic);
   object-fit: contain;
-  height: 100%;
-  height: calc(var(--height) * 0.6);
+  width: auto;
+  max-width: 100%;
+  max-height: calc(var(--height) * 0.6);
   border-radius: 7px;
   padding: 5px;
   margin: 0 auto;

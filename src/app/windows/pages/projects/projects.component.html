@@ -1,5 +1,5 @@
 <header>
-  <div class="project__title">
+  <div>
     <mat-icon (click)="back()">arrow_back_ios</mat-icon>
     <div>
       <h1>Proyectos</h1>
@@ -12,12 +12,14 @@
 <main>
   <section>
     @defer {
-      @for (project of projects; track $index) {
+      @for (project of projects$ | async; track $index) {
         <article>
-          <img [src]="project.image" [alt]="project.title" />
-          <div class="project__item">
+          @defer (when project.image) {
+            <img [src]="project.image" [alt]="project.title" />
+          }
+          <div>
             <h3>{{ project.title }}</h3>
-            <a [routerLink]="['../proyecto/1']">ver más</a>
+            <a [routerLink]="['../proyecto/', project.path]">ver más</a>
           </div>
         </article>
       }

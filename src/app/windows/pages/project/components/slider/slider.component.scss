@@ -6,8 +6,8 @@
   border-radius: 10px;
 
   &__content .item {
-    width: 7.375rem;
-    height: 10.5625rem;
+    width: calc(var(--view) * 7.375);
+    height: calc(var(--view) * 10.5625);
     position: absolute;
     top: 100%;
     z-index: 1;
@@ -42,15 +42,15 @@
     }
 
     &:nth-child(4) {
-      left: calc(55% + 8.5rem);
+      left: calc(55% + var(--view) * 8.5);
     }
 
     &:nth-child(5) {
-      left: calc(55% + 17rem);
+      left: calc(55% + var(--view) * 17);
     }
 
     &:nth-child(n + 6) {
-      left: calc(55% + 26rem);
+      left: calc(55% + var(--view) * 26);
       opacity: 0;
     }
   }
@@ -60,16 +60,22 @@
     width: 100%;
     top: 50%;
     z-index: 1;
-    gap: 2rem;
-    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: calc(var(--view) * 2);
+    padding: 0 calc(var(--view) * 2);
 
     & > div {
-      width: 3rem;
-      height: 3rem;
+      width: calc(var(--view) * 3);
+      height: calc(var(--view) * 3);
       border-radius: 100%;
       background-color: var(--white);
       color: var(--nordic);
       cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       &:hover {
         background-color: var(--nordic);
@@ -78,11 +84,11 @@
       }
 
       &:nth-child(1) {
-        padding-right: 0.15rem;
+        padding-right: calc(var(--view) * 0.175);
       }
 
       &:nth-child(2) {
-        padding-left: 0.15rem;
+        padding-left: calc(var(--view) * 0.175);
       }
 
       & .material-symbols-outlined {
@@ -91,9 +97,11 @@
           'wght' 600,
           'GRAD' 200,
           'opsz' 20;
-        font-size: 2rem;
+        font-size: calc(var(--view) * 2);
         width: fit-content;
         height: fit-content;
+        display: grid;
+        place-items: center;
       }
     }
   }

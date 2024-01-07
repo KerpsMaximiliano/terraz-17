@@ -1,17 +1,14 @@
 <div class="box-slider">
   <div id="slide" class="box-slider__content">
-    <div class="item" style="background-image: url('assets/images/project/1/2.png')"></div>
-    <div class="item" style="background-image: url('assets/images/project/1/3.png')"></div>
-    <div class="item" style="background-image: url('assets/images/project/1/4.png')"></div>
-    <div class="item" style="background-image: url('assets/images/project/1/5.png')"></div>
-    <div class="item" style="background-image: url('assets/images/project/1/6.jpg')"></div>
-    <div class="item" style="background-image: url('assets/images/project/1/7.jpg')"></div>
+    @for (image of images; track $index) {
+      <div class="item" [style.background-image]="'url(' + image + ')'"></div>
+    }
   </div>
-  <div class="box-slider__btns flex-bet">
-    <div class="flex" (click)="change(false)" matTooltip="Anterior" matTooltipPosition="below">
+  <div class="box-slider__btns">
+    <div (click)="change(false)" matTooltip="Anterior" matTooltipPosition="below">
       <mat-icon class="material-symbols-outlined previous">chevron_left</mat-icon>
     </div>
-    <div class="flex" (click)="change(true)" matTooltip="Siguiente" matTooltipPosition="below">
+    <div (click)="change(true)" matTooltip="Siguiente" matTooltipPosition="below">
       <mat-icon class="material-symbols-outlined">chevron_right</mat-icon>
     </div>
   </div>

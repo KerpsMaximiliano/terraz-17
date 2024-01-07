@@ -42,6 +42,7 @@ import { SectionsComponent } from './components/sections/sections.component';
         overflow-y: scroll;
         height: 100%;
         max-height: var(--height);
+        background-color: var(--white);
       }
 
       section {

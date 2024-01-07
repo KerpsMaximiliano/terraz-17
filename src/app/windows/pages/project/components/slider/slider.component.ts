@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 // * Material.
 import { MatIconModule } from '@angular/material/icon';
@@ -12,6 +12,8 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrls: ['./slider.component.scss'],
 })
 export class SliderComponent {
+  @Input() public images?: string[] = [];
+
   public change(direction: boolean): void {
     if (direction) {
       const lists = document.querySelectorAll('.item');

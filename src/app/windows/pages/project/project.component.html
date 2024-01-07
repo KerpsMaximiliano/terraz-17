@@ -1,17 +1,24 @@
 <div class="box">
-  <div class="box-container">
-    <div class="flex-bet">
-      <h1>Avances de obra</h1>
-      <h2>{{ item.title }}</h2>
+  <header>
+    <div class="project__title">
+      <mat-icon (click)="back()">arrow_back_ios</mat-icon>
+      <div>
+        <h1>{{ project.title }}</h1>
+        <h2>DEPARTAMENTOS</h2>
+      </div>
     </div>
+    <app-core-menu />
+  </header>
 
-    <div class="box-content flex-bet">
-      <div class="box-content__text flex-col">
+  <main>
+    <div class="content">
+      <div class="content__text">
         <h3>DESCRIPCIÓN</h3>
-        <p>{{ item.description }}</p>
+        <p>{{ project.description }}</p>
+        <button type="button">Ver avances de obra</button>
       </div>
 
-      <app-windows-project-slider class="box-content__img" />
+      <app-windows-project-slider class="content__img" [images]="project.images" />
     </div>
-  </div>
+  </main>
 </div>

@@ -20,7 +20,7 @@ import { MenuComponent } from '@core/components/menu.component';
   styleUrl: './project.component.scss',
 })
 export class ProjectComponent {
-  public item: IProject = PROJECT;
+  public project: IProject = PROJECT;
 
   // public ngAfterViewInit(): void {
   //   this._loading.hide();
@@ -34,16 +34,26 @@ export class ProjectComponent {
 }
 
 export const PROJECT: IProject = {
-  id: 1,
   title: '3 de Febrero 2025',
   description:
     'Nuestras viviendas se realizan basándose en la construcción tradicional (no prefabricadas) y modulares de hormigoón (las únicas con CAT 1) desarrolladas con materiales de excelente calidad y perdurabilidad.',
-  image: '/assets/images/project/unique.png',
+  images: [
+    'assets/images/projects/febrero/1.jpeg',
+    'assets/images/projects/febrero/2.jpeg',
+    'assets/images/projects/febrero/3.jpeg',
+    'assets/images/projects/febrero/4.jpeg',
+    'assets/images/projects/febrero/5.jpeg',
+    'assets/images/projects/febrero/6.jpeg',
+    'assets/images/projects/febrero/7.jpeg',
+    'assets/images/projects/febrero/8.jpeg',
+    'assets/images/projects/febrero/9.jpeg',
+    'assets/images/projects/febrero/10.jpeg',
+    'assets/images/projects/febrero/11.jpeg',
+  ],
 };
 
 export interface IProject {
-  id: number;
   title: string;
-  image: string;
+  images: string[];
   description: string;
 }
