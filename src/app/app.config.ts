@@ -3,12 +3,16 @@ import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { Routes, provideRouter } from '@angular/router';
+import { provideRouter, Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./windows/windows.routes').then(m => m.routes),
+  },
+  {
+    path: 'mobile',
+    loadChildren: () => import('./mobile/mobile.routes').then(m => m.routes),
   },
 ];
 

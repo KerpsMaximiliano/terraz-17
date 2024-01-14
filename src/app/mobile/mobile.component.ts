@@ -13,14 +13,14 @@ import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterOutlet, MatSidenavModule, MatIconModule, RouterLink, RouterLinkActive],
-  selector: 'app-windows',
+  selector: 'app-mobile',
   template: `
     <mat-drawer-container hasBackdrop="true">
       <mat-drawer #drawer mode="over" position="end" [autoFocus]="false">
         @defer {
           <style>
             .mat-drawer {
-              width: calc(var(--view) * 18);
+              width: var(--width);
             }
 
             div {
@@ -102,7 +102,7 @@ import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
     </mat-drawer-container>
   `,
 })
-export class WindowsComponent implements OnDestroy {
+export class MobileComponent implements OnDestroy {
   @ViewChild('drawer') public drawer?: MatDrawer;
 
   private _service: CoreService = inject(CoreService);

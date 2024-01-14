@@ -1,6 +1,11 @@
-import { Location } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { AsyncPipe, JsonPipe, Location } from '@angular/common';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
+import { collection, collectionData, doc, docData, Firestore } from '@angular/fire/firestore';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { Observable } from 'rxjs';
+
+// * Services.
+import { CoreService } from '@core/services/core.service';
 
 // * Material.
 import { MatIconModule } from '@angular/material/icon';
@@ -15,45 +20,57 @@ import { MenuComponent } from '@core/components/menu.component';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-windows-project',
-  imports: [RouterLink, MatIconModule, SliderComponent, MenuComponent],
+  imports: [AsyncPipe, JsonPipe, RouterLink, MatIconModule, SliderComponent, MenuComponent],
   templateUrl: './project.component.html',
   styleUrl: './project.component.scss',
 })
 export class ProjectComponent {
-  public project: IProject = PROJECT;
+  public project$?: Observable<IProject>;
 
-  // public ngAfterViewInit(): void {
-  //   this._loading.hide();
-  // }
-
+  private _service: CoreService = inject(CoreService);
   private _location: Location = inject(Location);
+  private _fire: Firestore = inject(Firestore);
+  private _route: ActivatedRoute = inject(ActivatedRoute);
+  private _router: Router = inject(Router);
+  private _cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
+
+  public ngOnInit(): void {
+    const id = this._route.snapshot.paramMap.get('id');
+    if (!id) {
+      this._router.navigate(['/proyectos']);
+      return;
+    }
+
+    const ref = collection(this._fire, 'paths');
+    const paths = collectionData(ref) as unknown as Observable<any>;
+    paths.subscribe(paths => {
+      if (!id) {
+        this._router.navigate(['/proyectos']);
+        return;
+      }
+
+      paths.forEach((path: any) => {
+        path.paths.forEach((p: any) => {
+          if (p === id) {
+            const docRef = doc(this._fire, 'aparment', `${id}`);
+            this.project$ = docData(docRef) as unknown as Observable<IProject>;
+            this._service.hide();
+            this._cdr.markForCheck();
+          }
+        });
+      });
+    });
+  }
 
   public back(): void {
     this._location.back();
   }
 }
 
-export const PROJECT: IProject = {
-  title: '3 de Febrero 2025',
-  description:
-    'Nuestras viviendas se realizan basándose en la construcción tradicional (no prefabricadas) y modulares de hormigoón (las únicas con CAT 1) desarrolladas con materiales de excelente calidad y perdurabilidad.',
-  images: [
-    'assets/images/projects/febrero/1.jpeg',
-    'assets/images/projects/febrero/2.jpeg',
-    'assets/images/projects/febrero/3.jpeg',
-    'assets/images/projects/febrero/4.jpeg',
-    'assets/images/projects/febrero/5.jpeg',
-    'assets/images/projects/febrero/6.jpeg',
-    'assets/images/projects/febrero/7.jpeg',
-    'assets/images/projects/febrero/8.jpeg',
-    'assets/images/projects/febrero/9.jpeg',
-    'assets/images/projects/febrero/10.jpeg',
-    'assets/images/projects/febrero/11.jpeg',
-  ],
-};
-
 export interface IProject {
   title: string;
-  images: string[];
-  description: string;
+  status: boolean;
+  end?: string[];
+  renders?: string[];
+  advances?: string[];
 }

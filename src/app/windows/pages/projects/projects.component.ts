@@ -1,14 +1,17 @@
 import { AsyncPipe, Location } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { collection, collectionData, Firestore } from '@angular/fire/firestore';
 import { RouterLink } from '@angular/router';
+import { Observable } from 'rxjs';
+
+// * Services.
+import { CoreService } from '@core/services/core.service';
 
 // * Material.
 import { MatIconModule } from '@angular/material/icon';
 
 // * Shared.
-import { collection, collectionData, Firestore } from '@angular/fire/firestore';
 import { MenuComponent } from '@core/components/menu.component';
-import { Observable } from 'rxjs';
 
 @Component({
   standalone: true,
@@ -19,13 +22,19 @@ import { Observable } from 'rxjs';
   styleUrl: './projects.component.scss',
 })
 export class ProjectsComponent {
-  private _location: Location = inject(Location);
+  public projects$?: Observable<IProjects[]>;
 
-  firestore: Firestore = inject(Firestore);
-  projects$: Observable<IProjects[]>;
-  constructor() {
-    const ref = collection(this.firestore, 'projects');
+  private _service: CoreService = inject(CoreService);
+  private _location: Location = inject(Location);
+  private _fire: Firestore = inject(Firestore);
+
+  public ngOnInit(): void {
+    const ref = collection(this._fire, 'projects');
     this.projects$ = collectionData(ref) as Observable<IProjects[]>;
+  }
+
+  public ngAfterViewInit(): void {
+    this._service.hide();
   }
 
   public back(): void {

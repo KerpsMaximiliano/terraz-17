@@ -79,3 +79,8 @@ html {
   display: grid !important;
   place-items: center;
 }
+
+.loader-hidden {
+  opacity: 0 !important;
+  display: none !important;
+}

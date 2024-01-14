@@ -1,7 +1,6 @@
 import { AsyncPipe, NgStyle } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { collection, collectionData, Firestore } from '@angular/fire/firestore';
-import { DomSanitizer } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 
 // * Material.
@@ -16,16 +15,15 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './sections.component.html',
   styleUrls: ['./sections.component.scss'],
 })
-export class SectionsComponent {
-  firestore: Firestore = inject(Firestore);
-  sections$: Observable<ISection[]>;
-  sections: any[] = [];
-  constructor() {
-    const ref = collection(this.firestore, 'sections');
+export class SectionsComponent implements OnInit {
+  public sections$?: Observable<ISection[]>;
+
+  private _fire: Firestore = inject(Firestore);
+
+  public ngOnInit(): void {
+    const ref = collection(this._fire, 'sections');
     this.sections$ = collectionData(ref) as Observable<ISection[]>;
   }
-
-  private _sanitizer: DomSanitizer = inject(DomSanitizer);
 }
 
 export interface ISection {

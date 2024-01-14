@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 // * Directives.
@@ -55,7 +55,7 @@ export class ContactComponent {
     },
     {
       svg: 'whatsapp',
-      link: '',
+      link: 'https://wa.me/+5493413816505',
     },
   ];
 

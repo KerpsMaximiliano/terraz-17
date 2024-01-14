@@ -12,9 +12,11 @@
     <p><em>Planes ajustados a tus posibilidades</em></p>
   </div>
   <div class="video">
-    <video muted loop #video controls src="assets/videos/video.mp4">
-      <source type="video/mp4" />
-      Tu navegador no admite el elemento <code>video</code>.
-    </video>
+    @defer {
+      <video muted loop #video controls src="assets/videos/video.mp4">
+        <source type="video/mp4" />
+        Tu navegador no admite el elemento <code>video</code>.
+      </video>
+    }
   </div>
 </article>

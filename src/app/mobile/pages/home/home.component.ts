@@ -14,27 +14,27 @@ import { Subscription } from 'rxjs';
 import { CoreService } from '@app/core/services/core.service';
 
 // * Components.
-import { AboutUsComponent } from './components/about-us/about-us.component';
-import { CompanyComponent } from './components/company/company.component';
-import { ContactComponent } from './components/contact/contact.component';
-import { CustomServiceComponent } from './components/custom-service/custom-service.component';
-import { ExperiencesComponent } from './components/experiences/experiences.component';
+// import { AboutUsComponent } from './components/about-us/about-us.component';
+// import { CompanyComponent } from './components/company/company.component';
+// import { ContactComponent } from './components/contact/contact.component';
+// import { CustomServiceComponent } from './components/custom-service/custom-service.component';
+// import { ExperiencesComponent } from './components/experiences/experiences.component';
 import { HeroComponent } from './components/hero/hero.component';
-import { SectionsComponent } from './components/sections/sections.component';
+// import { SectionsComponent } from './components/sections/sections.component';
 
 @Component({
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     HeroComponent,
-    CompanyComponent,
-    SectionsComponent,
-    CustomServiceComponent,
-    AboutUsComponent,
-    ExperiencesComponent,
-    ContactComponent,
+    //   CompanyComponent,
+    //   SectionsComponent,
+    //   CustomServiceComponent,
+    //   AboutUsComponent,
+    //   ExperiencesComponent,
+    //   ContactComponent,
   ],
-  selector: 'app-windows-home',
+  selector: 'app-mobile-home',
   template: `
     <style>
       main {
@@ -53,8 +53,8 @@ import { SectionsComponent } from './components/sections/sections.component';
       }
     </style>
     <main #scroll>
-      <section><app-windows-home-hero /></section>
-      @defer {
+      <section><app-mobile-home-hero /></section>
+      <!-- @defer {
         <section #company><app-windows-home-company /></section>
       }
       @if (!toContact) {
@@ -75,7 +75,7 @@ import { SectionsComponent } from './components/sections/sections.component';
         @defer {
           <app-windows-home-contact />
         }
-      </section>
+      </section> -->
     </main>
   `,
 })

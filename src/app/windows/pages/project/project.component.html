@@ -1,10 +1,13 @@
+<!-- <p>{{ project$ | async | json }}</p> -->
 <div class="box">
   <header>
     <div class="project__title">
       <mat-icon (click)="back()">arrow_back_ios</mat-icon>
       <div>
-        <h1>{{ project.title }}</h1>
-        <h2>DEPARTAMENTOS</h2>
+        @if ((project$ | async)?.title) {
+          <h1>{{ (project$ | async)?.title }}</h1>
+          <h2>DEPARTAMENTOS</h2>
+        }
       </div>
     </div>
     <app-core-menu />
@@ -14,11 +17,20 @@
     <div class="content">
       <div class="content__text">
         <h3>DESCRIPCIÓN</h3>
-        <p>{{ project.description }}</p>
-        <button type="button">Ver avances de obra</button>
+        <p>
+          Nuestras viviendas se realizan basándose en la construcción tradicional (no prefabricadas) y modulares de
+          hormigoón (las únicas con CAT 1) desarrolladas con materiales de excelente calidad y perdurabilidad.
+        </p>
+        @if ((project$ | async)?.status && (project$ | async)?.advances) {
+          <button type="button">Ver avances de obra</button>
+        }
       </div>
 
-      <app-windows-project-slider class="content__img" [images]="project.images" />
+      @if ((project$ | async)?.status) {
+        <app-windows-project-slider class="content__img" [images]="(project$ | async)?.end" />
+      } @else {
+        <app-windows-project-slider class="content__img" [images]="(project$ | async)?.renders" />
+      }
     </div>
   </main>
 </div>
