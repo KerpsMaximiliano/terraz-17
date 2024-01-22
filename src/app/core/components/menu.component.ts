@@ -9,13 +9,6 @@ import { CoreService } from '@core/services/core.service';
   selector: 'app-core-menu',
   template: `
     <style>
-      nav {
-        position: absolute;
-        top: 0;
-        right: 0;
-        padding-top: 16px;
-      }
-
       button {
         display: flex;
         flex-direction: column;
@@ -28,7 +21,6 @@ import { CoreService } from '@core/services/core.service';
         border: none;
         background-color: transparent;
         cursor: pointer;
-        z-index: 10;
       }
 
       button div {
@@ -42,13 +34,11 @@ import { CoreService } from '@core/services/core.service';
         width: 24px;
       }
     </style>
-    <nav>
-      <button type="button" (click)="open()">
-        <div></div>
-        <div></div>
-        <div></div>
-      </button>
-    </nav>
+    <button type="button" aria-label="Menú" (click)="open()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </button>
   `,
 })
 export class MenuComponent {

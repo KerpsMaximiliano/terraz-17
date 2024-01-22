@@ -14,9 +14,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MenuComponent } from '@core/components/menu.component';
 
 @Component({
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-windows-projects',
+  standalone: true,
   imports: [AsyncPipe, RouterLink, MatIconModule, MenuComponent],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',

@@ -1,15 +1,15 @@
-<div class="box-slider">
-  <div id="slide" class="box-slider__content">
+<div class="box">
+  <div id="slide" class="box-content">
     @for (image of images; track $index) {
       <div class="item" [style.background-image]="'url(' + image + ')'"></div>
     }
   </div>
-  <div class="box-slider__btns">
-    <div (click)="change(false)" matTooltip="Anterior" matTooltipPosition="below">
+  <div class="box-btns">
+    <button mat-icon-button (click)="change(false)">
       <mat-icon class="material-symbols-outlined previous">chevron_left</mat-icon>
-    </div>
-    <div (click)="change(true)" matTooltip="Siguiente" matTooltipPosition="below">
+    </button>
+    <button mat-icon-button (click)="change(true)">
       <mat-icon class="material-symbols-outlined">chevron_right</mat-icon>
-    </div>
+    </button>
   </div>
 </div>

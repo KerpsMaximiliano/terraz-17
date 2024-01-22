@@ -1,13 +1,14 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 // * Material.
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-mobile-project-slider',
-  imports: [MatIconModule],
+  imports: [MatIconModule, MatButtonModule],
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.scss'],
 })

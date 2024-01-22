@@ -21,10 +21,6 @@ import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
       <mat-drawer #drawer mode="over" position="end" [autoFocus]="false">
         @defer {
           <style>
-            .mat-drawer-container {
-              height: 100%;
-            }
-
             .mat-drawer {
               width: max-content;
             }

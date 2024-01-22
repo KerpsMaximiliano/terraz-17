@@ -115,7 +115,7 @@ export class ContactComponent {
           subject: `${this.form.get('name')?.value}`,
           text: '',
         },
-        to: 'emicargnello@gmail.com',
+        to: 'maximilianokerps@gmail.com',
       });
     }
   }

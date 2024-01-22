@@ -1,36 +1,32 @@
-<!-- <p>{{ project$ | async | json }}</p> -->
 <div class="box">
   <header>
-    <div class="project__title">
+    <button type="button">
       <mat-icon (click)="back()">arrow_back_ios</mat-icon>
-      <div>
-        @if ((project$ | async)?.title) {
-          <h1>{{ (project$ | async)?.title }}</h1>
-          <h2>DEPARTAMENTOS</h2>
-        }
-      </div>
+    </button>
+
+    <div>
+      @if ((project$ | async)?.title) {
+        <h1>{{ (project$ | async)?.title }}</h1>
+        <h2>DEPARTAMENTOS</h2>
+      }
     </div>
+
     <app-core-menu />
   </header>
 
   <main>
-    <div class="content">
-      <div class="content__text">
-        <h3>DESCRIPCIÓN</h3>
-        <p>
-          Nuestras viviendas se realizan basándose en la construcción tradicional (no prefabricadas) y modulares de
-          hormigoón (las únicas con CAT 1) desarrolladas con materiales de excelente calidad y perdurabilidad.
-        </p>
-        @if ((project$ | async)?.status && (project$ | async)?.advances) {
-          <button type="button">Ver avances de obra</button>
-        }
-      </div>
-
-      @if ((project$ | async)?.status) {
-        <app-windows-project-slider class="content__img" [images]="(project$ | async)?.end" />
-      } @else {
-        <app-windows-project-slider class="content__img" [images]="(project$ | async)?.renders" />
+    <div>
+      <h3>DESCRIPCIÓN</h3>
+      <p>
+        Nuestras viviendas se realizan basándose en la construcción tradicional (no prefabricadas) y modulares de
+        hormigón (las únicas con CAT 1) desarrolladas con materiales de excelente calidad y perdurabilidad.
+      </p>
+      @if ((project$ | async)?.status && (project$ | async)?.advances) {
+        <button type="button">Ver avances de obra</button>
       }
     </div>
+
+    <app-windows-project-slider
+      [images]="(project$ | async)?.status ? (project$ | async)?.end : (project$ | async)?.renders" />
   </main>
 </div>

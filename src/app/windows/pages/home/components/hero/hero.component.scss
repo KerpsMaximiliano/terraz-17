@@ -1,8 +1,16 @@
 article {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: var(--height);
   overflow: hidden;
+  height: var(--height);
+  background-image: url('assets/images/home/hero/hero.png');
+  background-color: var(--white);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+app-core-menu {
+  position: absolute;
+  top: calc(var(--view) * 3);
+  right: calc(var(--view) * 3);
 }

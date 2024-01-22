@@ -1,12 +1,16 @@
 article {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: var(--height);
   overflow: hidden;
+  height: var(--height);
+  background-image: url('assets/images/home/hero/hero.png');
+  background-color: var(--white);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
 }
 
 app-core-menu {
-  padding: 16px 0;
+  position: absolute;
+  top: 16px;
+  right: 0;
 }
