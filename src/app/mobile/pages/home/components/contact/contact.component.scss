@@ -1,0 +1,52 @@
+article {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+h2,
+h3 {
+  color: var(--persian);
+}
+
+strong {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--nordic);
+}
+
+form {
+  width: 100%;
+
+  & mat-form-field {
+    width: 100%;
+  }
+
+  div:last-child {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
+
+mat-error {
+  font-weight: 800;
+}
+
+footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 36px;
+  padding: 16px 0 8px 0;
+
+  & a .mat-icon {
+    transform: scale(1.5);
+  }
+}
+
+.mat-icon {
+  transform: scale(1);
+}

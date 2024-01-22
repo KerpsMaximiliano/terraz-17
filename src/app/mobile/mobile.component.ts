@@ -2,6 +2,8 @@ import { ChangeDetectionStrategy, Component, inject, OnDestroy, ViewChild } from
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { Subscription } from 'rxjs';
 
+import AOS from 'aos';
+
 // * Services.
 import { CoreService } from '@app/core/services/core.service';
 
@@ -19,8 +21,12 @@ import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
       <mat-drawer #drawer mode="over" position="end" [autoFocus]="false">
         @defer {
           <style>
+            .mat-drawer-container {
+              height: 100%;
+            }
+
             .mat-drawer {
-              width: var(--width);
+              width: max-content;
             }
 
             div {
@@ -29,7 +35,7 @@ import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
               justify-content: space-between;
               align-items: center;
               height: 100%;
-              padding: calc(var(--view) * 2);
+              padding: 12px;
               background-color: var(--nordic);
             }
 
@@ -38,7 +44,7 @@ import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
               flex-direction: column;
               justify-content: center;
               align-items: center;
-              gap: calc(var(--view) * 1.5);
+              gap: 8px;
               width: 100%;
             }
 
@@ -46,15 +52,11 @@ import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
               width: 100%;
               text-decoration: none;
               color: var(--white);
-              font-size: calc(var(--view) * 1.1);
-              padding: calc(var(--view) * 0.5) calc(var(--view) * 1);
+              font-size: 16px;
+              padding: 16px;
               border-radius: 10px;
               display: flex;
               align-items: center;
-            }
-
-            a:hover {
-              background-color: rgb(255 255 255 / 0.05);
             }
 
             a.active {
@@ -67,8 +69,8 @@ import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
             }
 
             img {
-              padding: calc(var(--view) * 1);
-              width: 60%;
+              padding: 16px;
+              width: 100%;
               height: auto;
               opacity: 0.4;
             }
@@ -78,18 +80,14 @@ import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
               <a
                 routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }"
-                [routerLink]="''"
-                (click)="navigate('/')">
+                [routerLink]="'/mobile'"
+                (click)="navigate('/mobile')">
                 <mat-icon class="material-symbols-outlined"> home </mat-icon>
                 Desarrollos
               </a>
-              <a routerLinkActive="active" [routerLink]="'/proyectos'" (click)="navigate('/proyectos')">
+              <a routerLinkActive="active" [routerLink]="'/mobile/proyectos'" (click)="navigate('/mobile/proyectos')">
                 <mat-icon class="material-symbols-outlined"> apartment </mat-icon>
                 Proyectos
-              </a>
-              <a routerLinkActive="active" [routerLink]="'/seguinos'" (click)="navigate('/seguinos')">
-                <mat-icon class="material-symbols-outlined"> mail </mat-icon>
-                Seguinos
               </a>
             </nav>
             <img src="assets/images/loading/logo.png" alt="Terraz" />
@@ -108,6 +106,14 @@ export class MobileComponent implements OnDestroy {
   private _service: CoreService = inject(CoreService);
   private _router: Router = inject(Router);
   private _subscription: Subscription = this._service.menu.subscribe(() => this.drawer?.toggle());
+
+  ngAfterViewInit() {
+    AOS.init();
+  }
+
+  ngAfterViewChecked() {
+    AOS.refresh();
+  }
 
   public navigate(route: string): void {
     if (route !== this._router.url) this._service.toggleMenu();

@@ -1,4 +1,4 @@
-<article>
+<article data-aos="fade-up" data-aos-duration="1000">
   <div>
     <div class="title">
       <h2>Atención personalizada</h2>
@@ -12,7 +12,7 @@
     <p><em>Planes ajustados a tus posibilidades</em></p>
   </div>
   <div class="video">
-    @if (video$ | async; as video){
+    @if (video$ | async; as video) {
       <video muted loop #video controls [src]="video[0].url">
         <source type="video/mp4" />
         Tu navegador no admite el elemento <code>video</code>.

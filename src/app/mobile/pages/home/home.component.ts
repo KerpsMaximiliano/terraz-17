@@ -1,119 +1,62 @@
-import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  inject,
-  OnDestroy,
-  ViewChild,
-} from '@angular/core';
-import { Subscription } from 'rxjs';
+import { AfterViewInit, ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
 // * Services.
 import { CoreService } from '@app/core/services/core.service';
 
 // * Components.
-// import { AboutUsComponent } from './components/about-us/about-us.component';
-// import { CompanyComponent } from './components/company/company.component';
-// import { ContactComponent } from './components/contact/contact.component';
-// import { CustomServiceComponent } from './components/custom-service/custom-service.component';
-// import { ExperiencesComponent } from './components/experiences/experiences.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { CompanyComponent } from './components/company/company.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { CustomServiceComponent } from './components/custom-service/custom-service.component';
+import { ExperiencesComponent } from './components/experiences/experiences.component';
 import { HeroComponent } from './components/hero/hero.component';
-// import { SectionsComponent } from './components/sections/sections.component';
+import { SectionsComponent } from './components/sections/sections.component';
 
 @Component({
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     HeroComponent,
-    //   CompanyComponent,
-    //   SectionsComponent,
-    //   CustomServiceComponent,
-    //   AboutUsComponent,
-    //   ExperiencesComponent,
-    //   ContactComponent,
+    CompanyComponent,
+    SectionsComponent,
+    CustomServiceComponent,
+    AboutUsComponent,
+    ExperiencesComponent,
+    ContactComponent,
   ],
   selector: 'app-mobile-home',
   template: `
-    <style>
-      main {
-        scroll-snap-type: y mandatory;
-        overflow-y: scroll;
-        height: 100%;
-        max-height: var(--height);
-        background-color: var(--white);
+    <main style="height: 100%; width: 100%; padding: 0 16px; background-color: var(--white);">
+      <section style="margin-bottom: 36px;"><app-mobile-home-hero /></section>
+      @defer {
+        <section style="margin-bottom: 36px;"><app-mobile-home-company /></section>
       }
 
-      section {
-        scroll-snap-align: start;
-        scroll-snap-stop: always;
-        min-width: var(--width);
-        min-height: var(--height);
+      @defer {
+        <section style="margin-bottom: 36px;"><app-mobile-home-sections /></section>
       }
-    </style>
-    <main #scroll>
-      <section><app-mobile-home-hero /></section>
-      <!-- @defer {
-        <section #company><app-windows-home-company /></section>
+      @defer {
+        <section style="margin-bottom: 36px;"><app-mobile-home-custom-service /></section>
       }
-      @if (!toContact) {
-        @defer {
-          <section><app-windows-home-sections /></section>
-        }
-        @defer {
-          <section><app-windows-home-custom-service /></section>
-        }
-        @defer {
-          <section><app-windows-home-about-us /></section>
-        }
-        @defer {
-          <section><app-windows-home-experiences /></section>
-        }
+      @defer {
+        <section style="margin-bottom: 36px;"><app-mobile-home-about-us /></section>
       }
-      <section #contact>
+      @defer {
+        <section style="margin-bottom: 36px;"><app-mobile-home-experiences /></section>
+      }
+
+      <section>
         @defer {
-          <app-windows-home-contact />
+          <app-mobile-home-contact />
         }
-      </section> -->
+      </section>
     </main>
   `,
 })
-export class HomeComponent implements AfterViewInit, OnDestroy {
-  @ViewChild('scroll') public scroll?: ElementRef;
-  @ViewChild('contact') public contact?: ElementRef;
-  public toContact: boolean = false;
-
-  private _service: CoreService = inject(CoreService);
-  private _cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
-  private _listener: (() => void) | null = null;
-  private _subscription: Subscription = this._service.contact.subscribe(() => this._scrollToElement());
+export class HomeComponent implements AfterViewInit {
+  private _core: CoreService = inject(CoreService);
 
   public ngAfterViewInit(): void {
-    this._service.hide();
-    if (!this.scroll?.nativeElement) return;
-    this._listener = this._service.scroll(this.scroll.nativeElement);
-  }
-
-  public ngOnDestroy(): void {
-    this._listener?.();
-    this._subscription?.unsubscribe();
-  }
-
-  public scrollToElement(element: HTMLElement): void {
-    element.scrollIntoView({ behavior: 'smooth' });
-  }
-
-  private _scrollToElement(): void {
-    this.toContact = true;
-    this._cdr.markForCheck();
-    setTimeout(() => {
-      if (!this.contact?.nativeElement) return;
-      this.scrollToElement(this.contact.nativeElement);
-    }, 100);
-    setTimeout(() => {
-      this.toContact = false;
-      this._cdr.markForCheck();
-    }, 500);
+    this._core.hide();
   }
 }

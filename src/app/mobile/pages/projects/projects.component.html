@@ -1,0 +1,28 @@
+<header>
+  <div>
+    <mat-icon (click)="back()">arrow_back_ios</mat-icon>
+    <div>
+      <h1>Proyectos</h1>
+      <h2>DEPARTAMENTOS</h2>
+    </div>
+  </div>
+  <app-core-menu />
+</header>
+
+<main>
+  <section>
+    @defer {
+      @for (project of projects$ | async; track $index) {
+        <article data-aos="zoom-in-up" data-aos-duration="1000">
+          @defer (when project.image) {
+            <img [src]="project.image" [alt]="project.title" />
+          }
+          <div>
+            <h3>{{ project.title }}</h3>
+            <a [routerLink]="['../proyecto/', project.path]">ver más</a>
+          </div>
+        </article>
+      }
+    }
+  </section>
+</main>

@@ -23,7 +23,7 @@
 form {
   display: flex;
   flex-direction: column;
-  gap: calc(var(--view) * 1.4);
+  // gap: calc(var(--view) * 1.4);
   position: relative;
 
   & div {

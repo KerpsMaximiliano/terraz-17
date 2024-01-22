@@ -1,0 +1,35 @@
+strong {
+  color: var(--nordic);
+  font-size: 16px;
+}
+
+.box {
+  padding-top: 0 !important;
+
+  &-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 0;
+  }
+}
+
+.mat-icon {
+  transform: scale(1.2);
+}
+
+.color0 {
+  color: var(--nordic);
+}
+
+.color1 {
+  color: var(--persian);
+}
+
+.color2 {
+  color: #52914b;
+}
+
+.color3 {
+  color: #df912f;
+}

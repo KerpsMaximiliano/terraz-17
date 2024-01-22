@@ -1,0 +1,51 @@
+article {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.box div {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 8px;
+}
+
+h1,
+h2 {
+  color: var(--nordic);
+  text-align: center;
+}
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+h2 {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+hr {
+  margin: 8px;
+  height: 4px;
+  background-color: var(--persian);
+  border: none;
+}
+
+p {
+  color: var(--nordic);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+em,
+i {
+  font-weight: 600;
+}
+
+i {
+  font-size: 16px;
+}

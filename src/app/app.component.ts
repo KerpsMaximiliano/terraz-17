@@ -1,8 +1,7 @@
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-// * Services.
 import { CoreService } from '@core/services/core.service';
 
 @Component({

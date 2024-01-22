@@ -1,0 +1,16 @@
+<article>
+  <div class="title">
+    <h2>Somos Terraz</h2>
+    <h3>NUESTRA EMPRESA</h3>
+  </div>
+
+  @for (item of aboutUs; track $index) {
+    <div data-aos="fade-right" data-aos-duration="1000" class="box">
+      <div class="box-title">
+        <mat-icon [class]="'color' + $index">radio_button_checked</mat-icon>
+        <strong>{{ item.title }}</strong>
+      </div>
+      <p>{{ item.description }}</p>
+    </div>
+  }
+</article>

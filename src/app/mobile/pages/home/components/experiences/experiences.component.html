@@ -1,0 +1,40 @@
+<article data-aos="fade-up" data-aos-duration="1000">
+  <div class="title">
+    <h2>
+      <em>Experiencia de </em>
+      <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <em>nuestros clientes</em>
+    </h2>
+  </div>
+
+  @defer (when experiences$) {
+    @for (experience of experiences$ | async; track $index) {
+      <div class="box" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="box-hero">
+          <img [src]="experience.image" [alt]="'Fotografia de ' + experience.name" />
+          <div>
+            <h3>{{ experience.name }}</h3>
+            <p>{{ experience.count }} reseñas - {{ experience.photos }} fotos</p>
+          </div>
+        </div>
+
+        <div class="box-main">
+          <p>
+            {{ experience.description }}
+          </p>
+        </div>
+
+        <div class="box-footer">
+          <p>{{ experience.time }}</p>
+          <div>
+            <mat-icon>star</mat-icon>
+            <mat-icon>star</mat-icon>
+            <mat-icon>star</mat-icon>
+            <mat-icon>star</mat-icon>
+            <mat-icon>star</mat-icon>
+          </div>
+        </div>
+      </div>
+    }
+  }
+</article>

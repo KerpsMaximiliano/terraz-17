@@ -1,6 +1,10 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, NgZone, ViewChild } from '@angular/core';
 import { addDoc, collection, Firestore } from '@angular/fire/firestore';
 import { DomSanitizer } from '@angular/platform-browser';
+import { take } from 'rxjs';
+
+// * CDK's.
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 
 // * Directives.
 import { NgIf, NgStyle } from '@angular/common';
@@ -38,14 +42,13 @@ import { ButtonComponent } from '@core/components/button.component';
     MapComponent,
     ButtonComponent,
   ],
-  selector: 'app-windows-home-contact',
+  selector: 'app-mobile-home-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss', '../common.scss'],
+  styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent {
   public form: UntypedFormGroup;
   public getErrorMessage = getErrorMessage;
-  private firestore: Firestore = inject(Firestore);
   public networks: INetwork[] = [
     {
       svg: 'facebook',
@@ -76,14 +79,22 @@ export class ContactComponent {
     },
   ];
 
+  @ViewChild('autosize') autosize?: CdkTextareaAutosize;
+
   constructor(
     private _iconRegistry: MatIconRegistry,
-    private _sanitizer: DomSanitizer
+    private _sanitizer: DomSanitizer,
+    private _ngZone: NgZone,
+    private _firestore: Firestore
   ) {
     this._ICONS.forEach((icon: Icon) => {
       this._iconRegistry.addSvgIconLiteral(icon.name, this._sanitizer.bypassSecurityTrustHtml(icon.src));
     });
     this.form = this._setForm();
+  }
+
+  public triggerResize(): void {
+    this._ngZone.onStable.pipe(take(1)).subscribe(() => this.autosize?.resizeToFitContent(true));
   }
 
   public color(field: string, focused: boolean): string {
@@ -121,7 +132,7 @@ export class ContactComponent {
   }
 
   private sendEmail(data: IMail) {
-    const ref = collection(this.firestore, 'mail');
+    const ref = collection(this._firestore, 'mail');
     return addDoc(ref, data);
   }
 

@@ -1,0 +1,100 @@
+<article>
+  <h2>Contactános</h2>
+
+  <strong><mat-icon>location_on</mat-icon> Av. Carballo 183 (Of. Rivera)</strong>
+
+  <strong><mat-icon>phone</mat-icon>+54 9 3413 816505</strong>
+
+  <h3>Dejanos tu consulta</h3>
+
+  <form [formGroup]="form" data-aos="fade-up" data-aos-duration="1000">
+    <mat-form-field appearance="fill">
+      <mat-label> Nombre </mat-label>
+      <input
+        matInput
+        formControlName="name"
+        #name="matInput"
+        placeholder="Ingrese su nombre"
+        required
+        minlength="3"
+        maxlength="31"
+        [ngStyle]="{ color: color('name', name.focused) }" />
+      <mat-icon matSuffix [ngStyle]="{ color: color('name', name.focused) }"> person </mat-icon>
+      @if (form.get('name')?.invalid && form.get('name')?.touched) {
+        <mat-error>{{ getErrorMessage(form.get('name')) }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label> Teléfono </mat-label>
+      <input
+        matInput
+        formControlName="phone"
+        #phone="matInput"
+        placeholder="Ingrese su teléfono"
+        required
+        minlength="3"
+        maxlength="30"
+        [ngStyle]="{ color: color('phone', phone.focused) }" />
+      <mat-icon matSuffix [ngStyle]="{ color: color('phone', phone.focused) }"> phone </mat-icon>
+      @if (form.get('phone')?.invalid && form.get('phone')?.touched) {
+        <mat-error>{{ getErrorMessage(form.get('phone')) }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label> Correo Electrónico </mat-label>
+      <input
+        matInput
+        formControlName="mail"
+        #mail="matInput"
+        placeholder="Ingrese su correo electronico"
+        required
+        minlength="3"
+        maxlength="41"
+        [ngStyle]="{ color: color('mail', mail.focused) }" />
+      <mat-icon matSuffix [ngStyle]="{ color: color('mail', mail.focused) }"> alternate_email </mat-icon>
+
+      @if (form.get('mail')?.invalid && form.get('mail')?.touched) {
+        <mat-error>{{ getErrorMessage(form.get('mail')) }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label> Mensaje </mat-label>
+      <textarea
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="7"
+        matInput
+        formControlName="message"
+        #message="matInput"
+        placeholder="Deje su mensaje... "
+        required
+        minlength="3"
+        maxlength="201"
+        [ngStyle]="{ color: color('message', message.focused) }"></textarea>
+      <mat-icon matSuffix [ngStyle]="{ color: color('message', message.focused) }"> mail </mat-icon>
+      @if (form.get('message')?.invalid && form.get('message')?.touched) {
+        <mat-error>{{ getErrorMessage(form.get('message')) }}</mat-error>
+      }
+    </mat-form-field>
+
+    <div>
+      <app-core-button
+        [config]="{ leyend: 'ENVIAR', disabled: form.invalid, color: 'var(--persian)' }"
+        (click)="onSubmit()" />
+    </div>
+  </form>
+
+  <app-core-maps style="height: 400px; width: 100%" />
+</article>
+
+<footer>
+  @for (network of networks; track $index) {
+    <a [href]="network.link" target="_blank">
+      <mat-icon [svgIcon]="network.svg"></mat-icon>
+    </a>
+  }
+</footer>

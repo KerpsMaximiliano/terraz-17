@@ -1,0 +1,38 @@
+<!-- @for (section of sections$ | async; track $index) {
+  <article>
+    <div></div>
+    <div>
+      <div>{{ $index + 1 }}</div>
+    </div>
+
+    <div>
+      <h2>
+        TZ <br />
+        <em>{{ section.title }}</em>
+      </h2>
+      <p>{{ section.description }}</p>
+      <button>ver más</button>
+      <div class="flex-bet">
+        <div>
+          <p>
+            <strong>
+              Siguiente sección <br />
+              TZ HOME
+            </strong>
+          </p>
+        </div>
+        <hr />
+        <div class="flex">
+          <span>5</span>
+          <button mat-icon-button>
+            <mat-icon matTooltip="Siguiente" matTooltipPosition="below"> chevron_right </mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div [style.background-image]="'url(' + section.image + ')'"></div>
+    </div>
+  </article>
+} -->

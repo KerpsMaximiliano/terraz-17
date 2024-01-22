@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [AsyncPipe],
-  selector: 'app-windows-home-custom-service',
+  selector: 'app-mobile-home-custom-service',
   templateUrl: './custom-service.component.html',
   styleUrls: ['./custom-service.component.scss', '../common.scss'],
 })
