@@ -1,8 +1,8 @@
 .box {
   display: grid;
   grid-template-rows: max-content 1fr;
-  gap: 24px;
-  padding: 16px;
+  padding: calc(var(--view) * 1.5);
+  padding: calc(var(--view) * 1);
   height: var(--height);
 }
 

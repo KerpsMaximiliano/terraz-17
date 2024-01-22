@@ -6,20 +6,17 @@ main {
 }
 
 header {
-  position: relative;
   padding: calc(var(--view) * 1);
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
 
-  & > div {
-    display: flex;
-    align-items: center;
-    column-gap: calc(var(--view) * 1);
+  & button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 
     & mat-icon {
-      color: #000000;
       font-size: calc(var(--view) * 1.2);
-      display: grid;
-      place-items: center;
-      cursor: pointer;
       color: var(--persian);
     }
   }
@@ -44,57 +41,50 @@ h2 {
 
 h3 {
   font-size: calc(var(--view) * 1.25);
-  font-weight: 700;
+  font-weight: 600;
   color: var(--nordic);
 }
 
 main {
-  height: var(--height);
-  padding: calc(var(--view) * 2) calc(var(--view) * 1);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: calc(var(--view) * 3);
+  padding: calc(var(--view) * 1) calc(var(--view) * 3);
+}
 
-  & section {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: calc(var(--view) * 3);
-    padding: 0 calc(var(--view) * 3);
+article {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr max-content;
+  gap: calc(var(--view) * 1);
 
-    & article {
-      position: relative;
-
-      & img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      & div {
-        min-height: calc(var(--view) * 3);
-        width: 100%;
-        position: absolute;
-        bottom: 0;
-        display: grid;
-        grid-template-columns: 1fr max-content;
-        align-items: center;
-        padding: calc(var(--view) * 1);
-        background-color: var(--white);
-
-        & a {
-          text-decoration: none;
-          color: var(--nordic);
-          font-size: 1rem;
-          font-weight: 500;
-          border: solid 2px var(--nordic);
-          border-radius: 7px;
-          padding: 0.3rem 0.5rem;
-          max-width: fit-content;
-          cursor: pointer;
-
-          &:hover {
-            background-color: var(--nordic);
-            color: var(--white);
-          }
-        }
-      }
-    }
+  & div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
+}
+
+button {
+  text-decoration: none;
+  color: var(--nordic);
+  font-size: 1rem;
+  font-weight: 500;
+  border: solid 2px var(--nordic);
+  border-radius: 7px;
+  padding: 0.3rem 0.5rem;
+  max-width: fit-content;
+  cursor: pointer;
+  background-color: transparent;
+
+  &:hover {
+    background-color: var(--nordic);
+    color: var(--white);
+  }
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
