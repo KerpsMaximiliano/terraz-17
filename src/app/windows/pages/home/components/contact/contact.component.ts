@@ -13,7 +13,7 @@ import { Icon } from '@windows-home/interfaces/icon.interface';
 import { FormsModule, ReactiveFormsModule, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 // * Validators.
-import { getErrorMessage, isLettersOnly, isNumbersOnly, notOnlySpaces } from '@core/validators/form.validator';
+import { getErrorMessage, isLettersAndSpacesOnly, isNumbersOnly, notOnlySpaces } from '@core/validators/form.validator';
 
 // * Material.
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -129,7 +129,7 @@ export class ContactComponent {
     return new UntypedFormGroup({
       name: new UntypedFormControl(
         null,
-        Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(30), isLettersOnly()])
+        Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(30)])
       ),
       phone: new UntypedFormControl(
         null,

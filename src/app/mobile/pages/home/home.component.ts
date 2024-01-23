@@ -22,7 +22,7 @@ import { SectionsComponent } from './components/sections/sections.component';
     CustomServiceComponent,
     AboutUsComponent,
     ExperiencesComponent,
-    ContactComponent,
+    ContactComponent
   ],
   selector: 'app-mobile-home',
   template: `
@@ -31,7 +31,6 @@ import { SectionsComponent } from './components/sections/sections.component';
       @defer {
         <section style="margin-bottom: 36px;"><app-mobile-home-company /></section>
       }
-
       @defer {
         <section style="margin-bottom: 36px;"><app-mobile-home-sections /></section>
       }

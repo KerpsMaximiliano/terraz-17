@@ -1,0 +1,36 @@
+article{
+    width: 100%;
+    max-width: 1600px;
+    height: var(--height);
+    max-height: var(--height);
+    margin: 0 auto;
+    padding: 0 20px;
+    & h1{
+        text-align: center;
+        padding: 0 25px 25px 25px;;
+        font-size: 28px;
+        color: #003743;
+        font-weight: 500;
+        & em{
+            font-weight: 700;
+        }
+    }
+
+    & h2{
+        font-size: 18px;
+        & mat-icon{
+            height: 21px;
+        }
+    }
+
+    & hr {
+        margin-top: 32px;
+    }
+}  
+
+.box{
+    display: flex;
+    font-size: 14px;
+    padding: 16px 0;
+    color: #36656d;
+}

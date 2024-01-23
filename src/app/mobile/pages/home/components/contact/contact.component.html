@@ -1,4 +1,4 @@
-<article>
+<article data-aos="fade-up" data-aos-duration="1000">
   <h2>Contactános</h2>
 
   <strong><mat-icon>location_on</mat-icon> Av. Carballo 183 (Of. Rivera)</strong>
@@ -7,8 +7,8 @@
 
   <h3>Dejanos tu consulta</h3>
 
-  <form [formGroup]="form" data-aos="fade-up" data-aos-duration="1000">
-    <mat-form-field appearance="fill">
+  <form [formGroup]="form">
+    <mat-form-field appearance="fill" data-aos="fade-left" data-aos-duration="1000">
       <mat-label> Nombre </mat-label>
       <input
         matInput
@@ -25,7 +25,7 @@
       }
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" data-aos="fade-left" data-aos-duration="1000">
       <mat-label> Teléfono </mat-label>
       <input
         matInput
@@ -42,7 +42,7 @@
       }
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" data-aos="fade-left" data-aos-duration="1000">
       <mat-label> Correo Electrónico </mat-label>
       <input
         matInput
@@ -60,7 +60,7 @@
       }
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" data-aos="fade-left" data-aos-duration="1000">
       <mat-label> Mensaje </mat-label>
       <textarea
         cdkTextareaAutosize
@@ -81,14 +81,14 @@
       }
     </mat-form-field>
 
-    <div>
+    <div >
       <app-core-button
         [config]="{ leyend: 'ENVIAR', disabled: form.invalid, color: 'var(--persian)' }"
         (click)="onSubmit()" />
     </div>
   </form>
 
-  <app-core-maps style="height: 400px; width: 100%" />
+  <app-core-maps style="height: 400px; width: 100%" data-aos="zoom-in-up" data-aos-duration="1000" />
 </article>
 
 <footer>

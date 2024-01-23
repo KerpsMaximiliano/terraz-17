@@ -1,0 +1,29 @@
+article{
+    width: 100%;
+    max-width: 1600px;
+    height: var(--height);
+    max-height: var(--height);
+    margin: 0 auto;
+    padding: 0 calc(var(--view) * 7);
+    & h1{
+        text-align: center;
+        padding: calc(var(--view) * 2);
+        font-size: calc(var(--view) * 3);
+        color: #003743;
+        font-weight: 500;
+        & em{
+            font-weight: 700;
+        }
+    }
+
+    & hr {
+        margin-top: calc(var(--view) * 2);
+    }
+}  
+
+.box{
+    display: flex;
+    font-size: calc(var(--view) * 1);
+    padding: calc(var(--view) * 1) 0;
+    color: #36656d;
+}

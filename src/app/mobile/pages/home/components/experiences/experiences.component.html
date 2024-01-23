@@ -1,5 +1,5 @@
-<article data-aos="fade-up" data-aos-duration="1000">
-  <div class="title">
+<article >
+  <div class="title" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
     <h2>
       <em>Experiencia de </em>
       <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -9,7 +9,7 @@
 
   @defer (when experiences$) {
     @for (experience of experiences$ | async; track $index) {
-      <div class="box" data-aos="zoom-in" data-aos-duration="1000">
+      <div class="box" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="100">
         <div class="box-hero">
           <img [src]="experience.image" [alt]="'Fotografia de ' + experience.name" />
           <div>

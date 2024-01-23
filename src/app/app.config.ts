@@ -14,6 +14,18 @@ export const routes: Routes = [
     path: 'mobile',
     loadChildren: () => import('./mobile/mobile.routes').then(m => m.routes),
   },
+  {
+    path: 'error',
+    loadComponent: () => import('./core/components/error-contact.component').then(m => m.ErrorContactComponent),
+  },
+  {
+    path: 'success',
+    loadComponent: () => import('./core/components/success.component').then(m => m.SuccessComponent),
+  },
+  {
+    path: '404-notfound',
+    loadComponent: () => import('./core/components/404-notfound.component').then(m => m.PageNotFoundComponent),
+  },
 ];
 
 export const appConfig: ApplicationConfig = {

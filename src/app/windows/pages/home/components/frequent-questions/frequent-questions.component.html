@@ -1,0 +1,15 @@
+<article >
+    <h1>PREGUNTAS <em>FRECUENTES</em></h1>
+    @defer (when questions$) {
+      @for (quest of questions$ | async; track $index) {
+        <div class="box">
+          <h2>{{quest.quest}}</h2>
+          <mat-icon>arrow_right</mat-icon>
+        </div>
+        <p>{{quest.answer}}</p>
+        @if ($index % 3 !== 0 || $index === 0) {
+          <hr />
+        }
+      }
+    }
+</article>

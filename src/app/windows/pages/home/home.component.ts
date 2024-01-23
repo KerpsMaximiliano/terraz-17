@@ -40,8 +40,9 @@ import { SectionsComponent } from './components/sections/sections.component';
       main {
         scroll-snap-type: y mandatory;
         overflow-y: scroll;
+        width: 100%;
         height: 100%;
-        max-height: var(--height);
+        /* max-height: var(--height); */
         background-color: var(--white);
       }
 
@@ -50,12 +51,13 @@ import { SectionsComponent } from './components/sections/sections.component';
         scroll-snap-stop: always;
         min-width: var(--width);
         min-height: var(--height);
+        height: 100%;
       }
     </style>
     <main #scroll>
-      <section><app-windows-home-hero /></section>
+      <section ><app-windows-home-hero /></section>
       @defer {
-        <section #company><app-windows-home-company /></section>
+        <section #company ><app-windows-home-company /></section>
       }
       @if (!toContact) {
         @defer {
