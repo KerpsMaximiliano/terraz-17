@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, ViewChild, inject } from '@angular/core';
 
 // * Services.
 import { CoreService } from '@app/core/services/core.service';
@@ -11,6 +11,7 @@ import { CustomServiceComponent } from './components/custom-service/custom-servi
 import { ExperiencesComponent } from './components/experiences/experiences.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { SectionsComponent } from './components/sections/sections.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   standalone: true,
@@ -44,7 +45,7 @@ import { SectionsComponent } from './components/sections/sections.component';
         <section style="margin-bottom: 36px;"><app-mobile-home-experiences /></section>
       }
 
-      <section>
+      <section #contact>
         @defer {
           <app-mobile-home-contact />
         }
@@ -53,9 +54,25 @@ import { SectionsComponent } from './components/sections/sections.component';
   `,
 })
 export class HomeComponent implements AfterViewInit {
-  private _core: CoreService = inject(CoreService);
+  @ViewChild('contact') public contact?: ElementRef;
+  public toContact: boolean = false;
+
+  private _service: CoreService = inject(CoreService);
+  private _cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
+  private _subscription: Subscription = this._service.contact.subscribe(() => this._scrollToElement());
 
   public ngAfterViewInit(): void {
-    this._core.hide();
+    this._service.hide();
+  }
+
+  public ngOnDestroy(): void {
+    this._subscription?.unsubscribe();
+  }
+  private _scrollToElement(): void {
+    this.toContact = true;  
+    this.contact?.nativeElement.scrollIntoView({ behavior: 'smooth' });
+    this.toContact = false;  
+    this._cdr.markForCheck();
   }
 }
+

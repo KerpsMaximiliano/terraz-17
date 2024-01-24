@@ -40,15 +40,18 @@ import { SectionsComponent } from './components/sections/sections.component';
       main {
         width: 100%;
         height: 100%;
+        scroll-snap-type: y mandatory;
         background-color: var(--white);
       }
+
       section {
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
         min-width: var(--width);
         min-height: var(--height);
-        height: 100%;
       }
     </style>
-    <main>
+    <main >
       <section ><app-windows-home-hero /></section>
       @defer {
         <section #company ><app-windows-home-company /></section>
@@ -75,17 +78,31 @@ import { SectionsComponent } from './components/sections/sections.component';
     </main>
   `,
 })
-export class HomeComponent implements AfterViewInit {
+export class HomeComponent implements AfterViewInit, OnDestroy  {
   @ViewChild('contact') public contact?: ElementRef;
   public toContact: boolean = false;
 
   private _service: CoreService = inject(CoreService);
+  private _cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
+  private _subscription: Subscription = this._service.contact.subscribe(() => this._scrollToElement());
 
   public ngAfterViewInit(): void {
     this._service.hide();
   }
 
-  ngAfterViewChecked() {
+  public ngAfterViewChecked() {
     AOS.refresh();
+  }
+
+  public ngOnDestroy(): void {
+    this._subscription?.unsubscribe();
+  }
+
+  private _scrollToElement(): void {
+    this.toContact = true;  
+    this.contact?.nativeElement.scrollIntoView({ behavior: 'smooth' });
+    this.toContact = false;  
+    this._cdr.markForCheck();
+    
   }
 }
