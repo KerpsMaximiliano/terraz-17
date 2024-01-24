@@ -1,19 +1,19 @@
 <article>
   <div class="title">
-    <h2>Somos Terraz</h2>
-    <h3>NUESTRA EMPRESA</h3>
+    <h2 data-aos="fade-right" data-aos-duration="1000">Somos Terraz</h2>
+    <h3 data-aos="fade-right" data-aos-duration="1000">NUESTRA EMPRESA</h3>
   </div>
   <div class="box">
     @for (item of aboutUs; track $index) {
-      <div class="box-icon">
+      <div class="box-icon" data-aos="fade-right" data-aos-duration="1000" >
         <mat-icon>radio_button_checked</mat-icon>
       </div>
-      <div>
+      <div data-aos="fade-right" data-aos-duration="1000">
         <strong>{{ item.title.split(' ')[0] }}</strong>
         <br />
         <strong>{{ item.title.split(' ').slice(1).join(' ') }}</strong>
       </div>
-      <p>{{ item.description }}</p>
+      <p data-aos="fade-right" data-aos-duration="1000">{{ item.description }}</p>
     }
   </div>
 </article>

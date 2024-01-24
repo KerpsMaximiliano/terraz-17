@@ -9,7 +9,7 @@
   <div class="box">
     @defer (when experiences$) {
       @for (experience of experiences$ | async; track $index) {
-        <div class="box-card" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="100">
+        <div class="box-card" data-aos="zoom-in" data-aos-duration="1000">
           <div class="box-card__hero">
             <img [src]="experience.image" [alt]="'Fotografia de ' + experience.name" />
             <div>

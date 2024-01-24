@@ -1,6 +1,10 @@
 import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+
+// * Fire.
 import { collection, collectionData, Firestore } from '@angular/fire/firestore';
+
+// * Rxjs.
 import { Observable } from 'rxjs';
 
 // * Material.

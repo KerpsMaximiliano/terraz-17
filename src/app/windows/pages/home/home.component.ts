@@ -9,7 +9,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
-
+import AOS from 'aos'
 // * Services.
 import { CoreService } from '@app/core/services/core.service';
 
@@ -38,23 +38,17 @@ import { SectionsComponent } from './components/sections/sections.component';
   template: `
     <style>
       main {
-        scroll-snap-type: y mandatory;
-        overflow-y: scroll;
         width: 100%;
         height: 100%;
-        /* max-height: var(--height); */
         background-color: var(--white);
       }
-
       section {
-        scroll-snap-align: start;
-        scroll-snap-stop: always;
         min-width: var(--width);
         min-height: var(--height);
         height: 100%;
       }
     </style>
-    <main #scroll>
+    <main>
       <section ><app-windows-home-hero /></section>
       @defer {
         <section #company ><app-windows-home-company /></section>
@@ -81,41 +75,17 @@ import { SectionsComponent } from './components/sections/sections.component';
     </main>
   `,
 })
-export class HomeComponent implements AfterViewInit, OnDestroy {
-  @ViewChild('scroll') public scroll?: ElementRef;
+export class HomeComponent implements AfterViewInit {
   @ViewChild('contact') public contact?: ElementRef;
   public toContact: boolean = false;
 
   private _service: CoreService = inject(CoreService);
-  private _cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
-  private _listener: (() => void) | null = null;
-  private _subscription: Subscription = this._service.contact.subscribe(() => this._scrollToElement());
 
   public ngAfterViewInit(): void {
     this._service.hide();
-    if (!this.scroll?.nativeElement) return;
-    this._listener = this._service.scroll(this.scroll.nativeElement);
   }
 
-  public ngOnDestroy(): void {
-    this._listener?.();
-    this._subscription?.unsubscribe();
-  }
-
-  public scrollToElement(element: HTMLElement): void {
-    element.scrollIntoView({ behavior: 'smooth' });
-  }
-
-  private _scrollToElement(): void {
-    this.toContact = true;
-    this._cdr.markForCheck();
-    setTimeout(() => {
-      if (!this.contact?.nativeElement) return;
-      this.scrollToElement(this.contact.nativeElement);
-    }, 100);
-    setTimeout(() => {
-      this.toContact = false;
-      this._cdr.markForCheck();
-    }, 500);
+  ngAfterViewChecked() {
+    AOS.refresh();
   }
 }
