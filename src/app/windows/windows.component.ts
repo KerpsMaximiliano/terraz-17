@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject, OnDestroy, ViewChild } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+
+// * Rxjs.
 import { Subscription } from 'rxjs';
 
 // * Services.

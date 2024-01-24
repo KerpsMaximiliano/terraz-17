@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject, OnDestroy, ViewChild } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+
+// * Rxjs.
 import { Subscription } from 'rxjs';
 
 // * Services.
@@ -100,8 +102,6 @@ export class MobileComponent implements OnDestroy {
   private _service: CoreService = inject(CoreService);
   private _router: Router = inject(Router);
   private _subscription: Subscription = this._service.menu.subscribe(() => this.drawer?.toggle());
-
-  
 
   public navigate(route: string): void {
     if (route !== this._router.url) this._service.toggleMenu();

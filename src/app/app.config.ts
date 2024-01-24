@@ -3,7 +3,7 @@ import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { provideRouter, Routes } from '@angular/router';
+import { Routes, provideRouter } from '@angular/router';
 
 export const routes: Routes = [
   {
@@ -23,7 +23,7 @@ export const routes: Routes = [
     loadComponent: () => import('./core/components/success.component').then(m => m.SuccessComponent),
   },
   {
-    path: '404-notfound',
+    path: '**',
     loadComponent: () => import('./core/components/404-notfound.component').then(m => m.PageNotFoundComponent),
   },
 ];
