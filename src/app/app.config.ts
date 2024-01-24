@@ -14,6 +14,14 @@ export const routes: Routes = [
     path: 'mobile',
     loadChildren: () => import('./mobile/mobile.routes').then(m => m.routes),
   },
+  {
+    path: '404-notfound',
+    loadComponent: () => import('./core/components/404.component').then(m => m.NotFoundComponent),
+  },
+  {
+    path: 'success',
+    loadComponent: () => import('./core/components/success.component').then(m => m.SuccessComponent),
+  },
 ];
 
 export const appConfig: ApplicationConfig = {

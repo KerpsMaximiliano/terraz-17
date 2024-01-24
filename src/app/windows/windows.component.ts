@@ -87,10 +87,10 @@ import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
                 <mat-icon class="material-symbols-outlined"> apartment </mat-icon>
                 Proyectos
               </a>
-              <a routerLinkActive="active" [routerLink]="'/seguinos'" (click)="navigate('/seguinos')">
+              <!-- <a routerLinkActive="active" [routerLink]="'/seguinos'" (click)="navigate('/seguinos')">
                 <mat-icon class="material-symbols-outlined"> mail </mat-icon>
                 Seguinos
-              </a>
+              </a> -->
             </nav>
             <img src="assets/images/loading/logo.png" alt="Terraz" />
           </div>

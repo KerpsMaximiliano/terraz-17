@@ -12,12 +12,12 @@
     top: 100%;
     z-index: 1;
     transform: translate(0, -50%);
-    background-position: 50% 50%;
-    background-size: cover;
-    background-repeat: no-repeat;
     display: flex;
     transition: 0.5s;
     border-radius: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 
     &:nth-child(1),
     &:nth-child(2) {

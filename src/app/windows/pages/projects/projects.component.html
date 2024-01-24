@@ -12,14 +12,19 @@
 </header>
 
 <main>
-  @for (project of projects$ | async; track $index) {
-    <article data-aos="zoom-in-up" data-aos-duration="1000" [routerLink]="['../proyecto/', project.path]">
-      <img [src]="project.image" [alt]="project.title" />
-
-      <div>
-        <h3>{{ project.title }}</h3>
-        <button type="button">ver más</button>
-      </div>
-    </article>
+  @defer (when (projects$ | async)) {
+    @for (project of projects$ | async; track $index) {
+      <article
+        data-aos="zoom-in-up"
+        data-aos-duration="1000"
+        data-aos-delay="500"
+        [routerLink]="['../proyecto/', project.path]">
+        <img [src]="project.image" [alt]="project.title" />
+        <div>
+          <h3>{{ project.title }}</h3>
+          <button type="button">ver más</button>
+        </div>
+      </article>
+    }
   }
 </main>

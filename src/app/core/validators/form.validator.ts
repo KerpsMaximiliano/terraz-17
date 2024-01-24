@@ -1,12 +1,13 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
-// ? Solo letras.
-export function isLettersOnly(): ValidatorFn {
+// ? Solo letras y espacios.
+export function isLettersAndSpacesOnly(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
-    const regex = /^[a-zA-Z]*$/;
-    return regex.test(control.value) ? null : { notLettersOnly: true };
+    const regex = /^[a-zA-Z\s]*$/;
+    return regex.test(control.value.trim()) ? null : { notLettersAndSpacesOnly: true };
   };
 }
+
 
 // ? Solo números.
 export function isNumbersOnly(): ValidatorFn {
@@ -37,7 +38,7 @@ export function getErrorMessage(control: any) {
     if (control.errors?.['maxlength']) {
       return `No puede tener más de ${control.errors?.['maxlength'].requiredLength} caracteres.`;
     }
-    if (control.errors?.['notLettersOnly']) {
+    if (control.errors?.['notLettersAndSpacesOnly']) {
       return `Solo se permiten letras.`;
     }
     if (control.errors?.['email']) {

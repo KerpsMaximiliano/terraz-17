@@ -1,4 +1,4 @@
-<article>
+<article data-aos="fade-up" data-aos-duration="1000">
   <h2>Contactános</h2>
 
   <strong><mat-icon>location_on</mat-icon> Av. Carballo 183 (Of. Rivera)</strong>
@@ -7,7 +7,7 @@
 
   <h3>Dejanos tu consulta</h3>
 
-  <form [formGroup]="form" data-aos="fade-up" data-aos-duration="1000">
+  <form [formGroup]="form">
     <mat-form-field appearance="fill">
       <mat-label> Nombre </mat-label>
       <input
@@ -81,7 +81,7 @@
       }
     </mat-form-field>
 
-    <div>
+    <div >
       <app-core-button
         [config]="{ leyend: 'ENVIAR', disabled: form.invalid, color: 'var(--persian)' }"
         (click)="onSubmit()" />

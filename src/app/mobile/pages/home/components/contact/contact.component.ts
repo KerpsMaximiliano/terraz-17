@@ -3,6 +3,7 @@ import { addDoc, collection, Firestore } from '@angular/fire/firestore';
 import { DomSanitizer } from '@angular/platform-browser';
 import { take } from 'rxjs';
 
+
 // * CDK's.
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 
@@ -17,12 +18,15 @@ import { Icon } from '@windows-home/interfaces/icon.interface';
 import { FormsModule, ReactiveFormsModule, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 // * Validators.
-import { getErrorMessage, isLettersOnly, isNumbersOnly, notOnlySpaces } from '@core/validators/form.validator';
+import { getErrorMessage, isLettersAndSpacesOnly, isNumbersOnly, notOnlySpaces } from '@core/validators/form.validator';
 
 // * Material.
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+
+// * Router.
+import { Router } from '@angular/router';
 
 // * Components.
 import { MapComponent } from '@app/core/components/map.component';
@@ -85,7 +89,8 @@ export class ContactComponent {
     private _iconRegistry: MatIconRegistry,
     private _sanitizer: DomSanitizer,
     private _ngZone: NgZone,
-    private _firestore: Firestore
+    private _firestore: Firestore,
+    private _router: Router
   ) {
     this._ICONS.forEach((icon: Icon) => {
       this._iconRegistry.addSvgIconLiteral(icon.name, this._sanitizer.bypassSecurityTrustHtml(icon.src));
@@ -127,6 +132,11 @@ export class ContactComponent {
           text: '',
         },
         to: 'emicargnello@gmail.com',
+      }).then(() => {
+        this._router.navigate(['/success']); 
+      })
+      .catch(() => {
+        this._router.navigate(['/404-notfound']);
       });
     }
   }
@@ -140,7 +150,7 @@ export class ContactComponent {
     return new UntypedFormGroup({
       name: new UntypedFormControl(
         null,
-        Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(30), isLettersOnly()])
+        Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(30)])
       ),
       phone: new UntypedFormControl(
         null,
