@@ -11,9 +11,6 @@ import {
 // * Rxjs.
 import { Subscription } from 'rxjs';
 
-// * Rxjs.
-import { Subscription } from 'rxjs';
-
 // * Services.
 import { CoreService } from '@app/core/services/core.service';
 
