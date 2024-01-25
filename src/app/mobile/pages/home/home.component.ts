@@ -1,4 +1,15 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, ViewChild, inject } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  ViewChild,
+  inject,
+} from '@angular/core';
+
+// * Rxjs.
+import { Subscription } from 'rxjs';
 
 // * Rxjs.
 import { Subscription } from 'rxjs';
@@ -25,7 +36,7 @@ import { SectionsComponent } from './components/sections/sections.component';
     CustomServiceComponent,
     AboutUsComponent,
     ExperiencesComponent,
-    ContactComponent
+    ContactComponent,
   ],
   selector: 'app-mobile-home',
   template: `
@@ -71,10 +82,9 @@ export class HomeComponent implements AfterViewInit {
     this._subscription?.unsubscribe();
   }
   private _scrollToElement(): void {
-    this.toContact = true;  
+    this.toContact = true;
     this.contact?.nativeElement.scrollIntoView({ behavior: 'smooth' });
-    this.toContact = false;  
+    this.toContact = false;
     this._cdr.markForCheck();
   }
 }
-

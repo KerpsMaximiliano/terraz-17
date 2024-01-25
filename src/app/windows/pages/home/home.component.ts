@@ -9,7 +9,10 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
-import AOS from 'aos'
+
+// * AOS.
+import AOS from 'aos';
+
 // * Services.
 import { CoreService } from '@app/core/services/core.service';
 
@@ -51,10 +54,10 @@ import { SectionsComponent } from './components/sections/sections.component';
         min-height: var(--height);
       }
     </style>
-    <main >
-      <section ><app-windows-home-hero /></section>
+    <main>
+      <section><app-windows-home-hero /></section>
       @defer {
-        <section #company ><app-windows-home-company /></section>
+        <section #company><app-windows-home-company /></section>
       }
       @if (!toContact) {
         @defer {
@@ -78,7 +81,7 @@ import { SectionsComponent } from './components/sections/sections.component';
     </main>
   `,
 })
-export class HomeComponent implements AfterViewInit, OnDestroy  {
+export class HomeComponent implements AfterViewInit, OnDestroy {
   @ViewChild('contact') public contact?: ElementRef;
   public toContact: boolean = false;
 
@@ -99,9 +102,9 @@ export class HomeComponent implements AfterViewInit, OnDestroy  {
   }
 
   private _scrollToElement(): void {
-    this.toContact = true;  
+    this.toContact = true;
     this.contact?.nativeElement.scrollIntoView({ behavior: 'smooth' });
-    this.toContact = false;  
+    this.toContact = false;
     this._cdr.markForCheck();
   }
 }
