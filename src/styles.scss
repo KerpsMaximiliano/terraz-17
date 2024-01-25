@@ -4,6 +4,10 @@
   --width: 0;
   --view: calc(((100vw + 100vh) / 1000) * 5.55);
   // * Colors.
+  --primary: #113a44;
+  --bg-primary: #ececec;
+  --common-color: #fff;
+
   --nordic: #113a44;
   --persian: #039d9d;
   --white: #ffffff;
@@ -16,6 +20,8 @@
   --form-init: var(--persian);
   // * Border.
   --border: 2px solid #e2e6ea;
+  // * Material.
+  --what-teacher-want: "WhatTeacherWants";
 }
 
 * {

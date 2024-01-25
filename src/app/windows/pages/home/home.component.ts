@@ -103,6 +103,5 @@ export class HomeComponent implements AfterViewInit, OnDestroy  {
     this.contact?.nativeElement.scrollIntoView({ behavior: 'smooth' });
     this.toContact = false;  
     this._cdr.markForCheck();
-    
   }
 }

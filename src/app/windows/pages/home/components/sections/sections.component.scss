@@ -1,64 +1,87 @@
+h1,
 h2,
-p,
-button {
-  color: var(--nordic);
+h3,
+a {
+  color: var(--primary);
 }
 
+h4,
 span,
-strong,
-.mat-icon {
-  color: var(--white);
+mat-icon {
+  color: var(--bg-primary);
+}
+
+h1,
+h2 {
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: calc(var(--view) * 0.5);
+  font-size: calc(var(--view) * 6);
 }
 
 h2 {
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: calc(var(--view) * 0.2);
-  font-size: calc(var(--view) * 6);
-  text-shadow: var(--text-shadow);
-}
-
-em {
   font-size: calc(var(--view) * 5);
+  min-width: calc(var(--view) * 31.25);
 }
 
-p {
+h3 {
   font-size: calc(var(--view) * 1.6);
-  font-weight: 600;
+  font-weight: 500;
   margin: calc(var(--view) * 4) 0;
+  max-width: calc(var(--view) * 25);
 }
 
-strong {
-  font-size: calc(var(--view) * 1.6);
+h4 {
+  font-size: calc(var(--view) * 1.6);;
   font-weight: 600;
 }
 
-hr {
-  height: 35%;
-  width: 0.4vw;
-  border: none;
-  background-color: var(--white);
+a {
+  font-size: calc(var(--view) * 1.15);;
+  font-weight: 500;
+  border: solid 2px var(--primary);
+  border-radius: 7px;
+  padding: calc(var(--view) * 0.5) calc(var(--view) * 1) calc(var(--view) * 0.5) calc(var(--view) * 1);
+  max-width: fit-content;
+  margin: 0 0 calc(var(--view) * 6) 0;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--primary);
+    color: var(--bg-primary);
+  }
 }
 
-article {
-  height: var(--height);
-  width: var(--width);
+.mat-icon {
+  width: calc(var(--view) * 2);
+  height: calc(var(--view) * 2);
+  font-size: calc(var(--view) * 2);
+  cursor: pointer;
+  z-index: 3;
+}
+
+.box-container {
+  overflow: hidden;
+  min-width: var(--width);
+  min-height: var(--height);
   position: relative;
   display: grid;
-  grid-template-columns: 0.7fr minmax(calc(var(--view) * 25), 0.7fr) 1.6fr;
+  grid-template-columns: 0.9fr minmax(calc(var(--view) * 25), 0.7fr) 1.2fr;
+  color: var(--common-color);
+  background-color: var(--common-color);
 
-  & > div:nth-child(1) {
+  & .box-bg {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 70%;
+    width: 65%;
     height: calc(var(--view) * 11);
     margin-bottom: calc(var(--view) * 3);
-    background-color: var(--nordic);
+    background-color:var(--primary);
     z-index: 2;
   }
 
-  & > div:nth-child(2) {
+  & .box-id {
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -68,61 +91,71 @@ article {
 
     & div:first-child {
       min-height: calc(var(--view) * 17.3);
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
 
     & div:last-child {
+      min-width: calc(var(--view) * 24.375);
       text-align: center;
-      font-size: calc(var(--view) * 50);
+      font-family: var(--what-teacher-want);
+      font-size: calc(var(--view) * 60);
       line-height: 0.925;
       color: var(--bg-primary);
-      font-weight: 600;
     }
   }
 
-  & > div:nth-child(3) {
+  .flex-bet{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .flex{
+    display: flex;
+    align-items: center;
+  }
+
+  & .box-text {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    min-height: calc(var(--view) * 3);
     padding-right: calc(var(--view) * 2);
+    margin-bottom: calc(var(--view) * 5);
     z-index: 3;
 
-    & > p {
-      text-shadow: var(--text-shadow);
-    }
-
-    & > div {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    &__next {
       gap: calc(var(--view) * 4);
-      min-width: max-content;
-      min-height: calc(var(--view) * 17.3);
+      min-width: calc(var(--view) * 34.25);
+
+      & hr {
+        height: calc(var(--view) * 4);
+        width: 5px;
+        border: none;
+        background-color: var(--common-color);
+      }
 
       & div:last-child {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         gap: calc(var(--view) * 1.5);
 
         & span {
           min-width: calc(var(--view) * 3.4375);
           text-align: center;
+          font-family: var(--what-teacher-want);
           font-size: calc(var(--view) * 7.35);
-          font-weight: 600;
+          font-weight: 500;
+          color: var(--common-color);
           line-height: 1;
         }
       }
     }
   }
 
-  & > div:nth-child(4) {
+  & .box-img {
     margin-bottom: calc(var(--view) * 3);
 
     & div {
-      width: auto;
+      width: 100%;
       height: 100%;
       background-size: contain;
       background-repeat: no-repeat;

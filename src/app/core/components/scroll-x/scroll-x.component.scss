@@ -1,0 +1,12 @@
+.scroll-x {
+    overflow: hidden;
+  
+    &-inner {
+      height: 100%;
+      width: 100%;
+      transform: translateX(-100%);
+      display: flex;
+      flex-wrap: nowrap;
+      transition: all 800ms linear;
+    }
+  }

@@ -1,38 +1,75 @@
-import { AsyncPipe, NgStyle } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
-import { collection, collectionData, Firestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, ViewChild, inject } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
+
+
+// * Rxjs.
+import { Observable, map } from 'rxjs';
 
 // * Material.
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
+// * Fire.
+import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+
+// * Services.
+import { ScrollService } from '@app/core/services/scroll.service';
+
+// * Components.
+import { ScrollXComponent } from '@app/core/components/scroll-x/scroll-x.component';
+
 @Component({
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [AsyncPipe, NgStyle, MatButtonModule, MatIconModule],
+  imports: [AsyncPipe, MatButtonModule, MatIconModule, ScrollXComponent],
   selector: 'app-windows-home-sections',
   templateUrl: './sections.component.html',
   styleUrls: ['./sections.component.scss'],
 })
-export class SectionsComponent implements OnInit {
-  public sections$?: Observable<ISection[]>;
+export class SectionsComponent implements AfterViewInit {
+  public animation: boolean = false;
+  public sections$?: Observable<ISections[]>;
+
+  @ViewChild('container') private container!: ElementRef;
 
   private _fire: Firestore = inject(Firestore);
+  private _scroll: ScrollService = inject(ScrollService);
 
   public ngOnInit(): void {
     const ref = collection(this._fire, 'sections');
-    this.sections$ = collectionData(ref) as Observable<ISection[]>;
+    this.sections$ = collectionData(ref).pipe(
+      map(sections => sections.sort((a, b) => a["id"] - b["id"]))
+    ) as Observable<ISections[]>;
+  }
+
+  public ngAfterViewInit(): void {
+    if (this.container) this.intersectionObserver();
+  }
+
+  public send(option: boolean): void {
+    this._scroll.send(option);
+  }
+
+  private intersectionObserver(): void {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) this.animation = true;
+      },
+      {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1,
+      }
+    );
+
+    observer.observe(this.container.nativeElement);
   }
 }
 
-export interface ISection {
+export interface ISections {
+  id: number;
+  path: string;
   title: string;
-  description: string;
   image: string;
-}
-
-export interface Img {
-  url: string;
-  alt: string;
+  description: string;
 }

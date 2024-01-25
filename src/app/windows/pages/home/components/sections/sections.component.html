@@ -1,38 +1,51 @@
-<!-- @for (section of sections$ | async; track $index) {
-  <article>
-    <div></div>
-    <div>
-      <div>{{ $index + 1 }}</div>
-    </div>
 
-    <div>
-      <h2>
-        TZ <br />
-        <em>{{ section.title }}</em>
-      </h2>
-      <p>{{ section.description }}</p>
-      <button>ver más</button>
-      <div class="flex-bet">
-        <div>
-          <p>
-            <strong>
-              Siguiente sección <br />
-              TZ HOME
-            </strong>
-          </p>
-        </div>
-        <hr />
-        <div class="flex">
-          <span>5</span>
-          <button mat-icon-button>
-            <mat-icon matTooltip="Siguiente" matTooltipPosition="below"> chevron_right </mat-icon>
-          </button>
-        </div>
-      </div>
-    </div>
+<app-scroll-x>
+  @defer (when sections$) {
+    @if(sections$ | async; as sections){
+      @for (item of sections$ | async; track $index){ 
+          <section class="box-container">
+          <div class="box-bg animation"></div>
+          <div class="box-id"  data-aos="fade-left" data-aos-duration="1000" >
+            <div class="flex">
+              <mat-icon class="material-symbols-outlined previous" (click)="send(false)" matTooltip="Anterior"
+                matTooltipPosition="below">chevron_left</mat-icon>
+            </div>
+            <div class="animation" >{{ item.id }}</div>
+          </div>
 
-    <div>
-      <div [style.background-image]="'url(' + section.image + ')'"></div>
-    </div>
-  </article>
-} -->
+          <div class="box-text">
+            <h1 class="animation" data-aos="fade-left" data-aos-duration="1000" > TZ </h1>
+            <h2 class="animation" data-aos="fade-left" data-aos-duration="1000" >{{ item.title }}</h2>
+            <h3 class="animation" data-aos="fade-left" data-aos-duration="1000" >{{ item.description }}</h3>
+            <a routerLink=""> ver más </a>
+            <div class="box-text__next flex-bet"  data-aos="fade-left" data-aos-duration="1000" >
+              <div>
+                <h4> Siguiente sección </h4>
+                @if ($index < sections.length - 1) {
+                  <h4>TZ {{ sections[$index + 1].title}}</h4>
+                } @else {
+                  <h4>TZ {{ sections[0].title }}</h4>
+                }
+              </div>
+              <hr>
+              <div class="flex">
+                @if ($index < sections.length - 1) {
+                  <span>{{ sections[$index+1].id }}</span>
+                } @else {
+                  <span>{{ sections[0].id }}</span>
+                }
+                <mat-icon class="material-symbols-outlined" (click)="send(true)" matTooltip="Siguiente"
+                matTooltipPosition="below">chevron_right</mat-icon>
+              </div>
+            </div>
+          </div>
+
+          <div class="box-img">
+            <div [style.backgroundImage]="'url('+ item.image + ')'" class="animation"
+            ></div>
+          </div>
+        </section>
+      }
+    }
+  }
+</app-scroll-x>

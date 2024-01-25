@@ -1,5 +1,8 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, ViewChild, inject } from '@angular/core';
 
+// * Rxjs.
+import { Subscription } from 'rxjs';
+
 // * Services.
 import { CoreService } from '@app/core/services/core.service';
 
@@ -11,7 +14,6 @@ import { CustomServiceComponent } from './components/custom-service/custom-servi
 import { ExperiencesComponent } from './components/experiences/experiences.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { SectionsComponent } from './components/sections/sections.component';
-import { Subscription } from 'rxjs';
 
 @Component({
   standalone: true,
