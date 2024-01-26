@@ -90,7 +90,7 @@ import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
           </div>
         }
       </mat-drawer>
-      <mat-drawer-content>
+      <mat-drawer-content style="overflow: hidden;">
         <router-outlet />
       </mat-drawer-content>
     </mat-drawer-container>

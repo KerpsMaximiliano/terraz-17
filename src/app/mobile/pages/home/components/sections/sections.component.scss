@@ -15,33 +15,30 @@ h1,
 h2 {
   font-weight: 800;
   line-height: 1;
-  letter-spacing: 8px;
-  font-size: 96px;
-}
-
-h2 {
-  font-size: 80px;
+  letter-spacing: 4px;
+  font-size: 34px;
 }
 
 h3 {
-  font-size: 22px;
+  font-size: 16px;
   font-weight: 500;
-  margin: 64px 0;
+  margin: 34px 0;
+  width: 70%;
 }
 
 h4 {
-  font-size: 22px;
+  font-size: calc(var(--view) * 1.6);;
   font-weight: 600;
 }
 
 a {
-  font-size: 17px;
+  font-size: calc(var(--view) * 1.15);;
   font-weight: 500;
   border: solid 2px var(--primary);
   border-radius: 7px;
-  padding: 8px 16px 8px 16px;
+  padding: calc(var(--view) * 0.5) calc(var(--view) * 1) calc(var(--view) * 0.5) calc(var(--view) * 1);
   max-width: fit-content;
-  margin: 0 0 96px 0;
+  margin: 0 0 calc(var(--view) * 6) 0;
   cursor: pointer;
 
   &:hover {
@@ -51,52 +48,52 @@ a {
 }
 
 .mat-icon {
-  width: 32px;
-  height: 32px;
-  font-size: 32px;
+  width: calc(var(--view) * 2);
+  height: calc(var(--view) * 2);
+  font-size: calc(var(--view) * 2);
   cursor: pointer;
   z-index: 3;
 }
 
+.content{
+  display: 	flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  padding: 0px 80px;
+}
+
+
 .box-container {
   overflow: hidden;
+  min-width: var(--width);
+  min-height: var(--height);
   position: relative;
   display: grid;
-  grid-template-columns: 0.9fr 0.7fr 1.2fr;
+  grid-template-rows: 1fr 1fr 1fr;
   color: var(--common-color);
   background-color: var(--common-color);
 
   & .box-bg {
     position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     bottom: 0;
     left: 0;
-    width: 65%;
-    height: 100%;
+    width: 100%;
+    height: calc(var(--view) * 11);
     margin-bottom: calc(var(--view) * 3);
     background-color:var(--primary);
     z-index: 2;
   }
 
   & .box-id {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    gap: 32px;
-    padding: 0 32px;
+    margin-bottom: 200px;
+    position: absolute;
+    color: var(--bg-primary);
+    font-size: 300px;
     z-index: 3;
-
-    & div:first-child {
-      min-height: var(--height);
-    }
-
-    & div:last-child {
-      min-width: calc(var(--view) * 24.375);
-      text-align: center;
-      font-family: var(--what-teacher-want);
-      font-size: 240px;
-      line-height: 0.925;
-      color: var(--bg-primary);
-    }
   }
 
   .flex-bet{
@@ -115,6 +112,7 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    min-height: calc(var(--view) * 3);
     padding-right: calc(var(--view) * 2);
     margin-bottom: calc(var(--view) * 5);
     z-index: 3;
@@ -147,7 +145,10 @@ a {
   }
 
   & .box-img {
-    margin-bottom: calc(var(--view) * 3);
+    position: absolute;
+    right: 65px;
+    bottom: 11.3%;
+    padding: 18rem;
 
     & div {
       width: 100%;

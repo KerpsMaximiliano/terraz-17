@@ -1,47 +1,37 @@
+
 <app-scroll-x>
   @defer (when sections$) {
     @if(sections$ | async; as sections){
       @for (item of sections$ | async; track $index){ 
           <section class="box-container">
-            <div class="box-bg animation"></div>
-            <div class="box-id">
-              <div class="flex">
-                <mat-icon class="material-symbols-outlined previous" (click)="send(false)" matTooltip="Anterior"
-                  matTooltipPosition="below">chevron_left</mat-icon>
-              </div>
-              <div class="animation">{{ item.id }}</div>
-            </div>
-
             <div class="box-text">
-              <h1 class="animation">{{ item.title }}</h1>
-              <h2 class="animation">{{ item.description }}</h2>
+              <h1 class="animation" data-aos="fade-left" data-aos-duration="1000" > TZ </h1>
+              <h2 class="animation" data-aos="fade-left" data-aos-duration="1000" >{{ item.title }}</h2>
+              <h3 class="animation" data-aos="fade-left" data-aos-duration="1000" >{{ item.description }}</h3>
               <a routerLink=""> ver más </a>
-              <div class="box-text__next flex-bet">
-                <div>
-                  <h4> Siguiente sección </h4>
-                  @if ($index < sections.length - 1) {
-                    <h4>TZ {{ sections[$index + 1].title}}</h4>
-                  } @else {
-                    <h4>TZ {{ sections[0].title }}</h4>
-                  }
-                </div>
-                <hr>
-               <div class="flex">
-                @if ($index < sections.length - 1) {
-                  <span>{{ sections[$index+1].id }}</span>
-                } @else {
-                  <span>{{ sections[0].id }}</span>
-                }
-                <mat-icon class="material-symbols-outlined" (click)="send(true)" matTooltip="Siguiente"
+            </div>
+            <div [style.backgroundImage]="'url('+ item.image + ')'" class="box-img"
+            ></div>
+            <div>
+              <div class="box-bg">
+                <div class="box-id">{{ item.id }}</div>
+                <mat-icon class="material-symbols-outlined previous" (click)="send(false)" matTooltip="Anterior"
+                matTooltipPosition="below">chevron_left</mat-icon>
+                <div class="content">
+                  <div>
+                    <h4> Siguiente sección </h4>
+                    @if ($index < sections.length - 1) {
+                      <h4>TZ {{ sections[$index + 1].title}}</h4>
+                    } @else {
+                      <h4>TZ {{ sections[0].title }}</h4>
+                    }
+                  </div>
+                    <mat-icon class="material-symbols-outlined" (click)="send(true)" matTooltip="Siguiente"
                 matTooltipPosition="below">chevron_right</mat-icon>
-              </div>
+                </div>
               </div>
             </div>
-
-            <div class="box-img">
-              <div [style.backgroundImage]="'url('+ item.image + ')'" class="animation"></div>
-            </div>
-          </section>
+        </section>
       }
     }
   }
